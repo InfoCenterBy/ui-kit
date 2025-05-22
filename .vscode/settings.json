@@ -20,5 +20,16 @@
           "titleBar.inactiveBackground": "#24242499",
           "titleBar.inactiveForeground": "#e7e7e799"
      },
-     "peacock.color": "#242424"
+     "peacock.color": "#242424",
+     "editor.quickSuggestions": {
+          "strings": "on"
+     },
+     "files.associations": {
+          "*.css": "tailwindcss"
+     },
+     "tailwind-fold.foldStyle": "QUOTES",
+	"tailwind-fold.foldedTextBackgroundColor": "#52b7ee09",
+	"tailwind-fold.foldLengthThreshold": 20,
+     "bemHelper.classNameCase":"any",
+     "prettier.semi": false,
 }
