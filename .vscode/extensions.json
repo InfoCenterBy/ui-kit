@@ -5,6 +5,7 @@
           "bradlc.vscode-tailwindcss",
           "box-of-hats.bemhelper",
           "dejmedus.tailwind-sorter",
-          "cipchk.cssrem"
+          "cipchk.cssrem",
+          "streetsidesoftware.code-spell-checker"
      ]
 }

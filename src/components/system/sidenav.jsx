@@ -3,11 +3,8 @@ const SideNav = () => {
 		<>
 			<ul className='top-2 sticky bg-base-200 rounded-box w-56 h-auto menu'>
 				<li>
-					<a>Item 1</a>
-				</li>
-				<li>
 					<details open>
-						<summary>Parent</summary>
+						<summary>Buttons</summary>
 						<ul>
 							<li>
 								<a>Submenu 1</a>
