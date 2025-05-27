@@ -32,4 +32,5 @@
 	"tailwind-fold.foldLengthThreshold": 20,
      "bemHelper.classNameCase":"any",
      "prettier.semi": false,
+     "prettier.printWidth": 80
 }

@@ -22,19 +22,16 @@ const TestPage = () => {
 	return (
 		<>
 			<main>
-				<div className='flex flex-row items-start gap-x-6 w-full h-full'>
-					<SideNav />
-					<div className='w-full'>
-						<Logo />
-						<h1 className='font-bold text-red-700 text-4xl underline'>Hello world!</h1>
-						<div className='mt-[1.375rem]'>
-							<Button props={'test'} className='btn-outline btn' />
-						</div>
-						<h1 className=''>Vite + React</h1>
-						<p className='read-the-docs'>Click on the Vite and React logos to learn more</p>
+				<div className='flex flex-row flex-wrap lg:flex-nowrap items-start content-start gap-x-6 pt-2 w-full h-full'>
+					<SideNav className={'lg:w-[20%] w-full'} />
+					<div className='w-full lg:w-[80%]'>
 						<DndContext onDragEnd={handleDragEnd}>
 							{!isDropped ? draggableMarkup : null}
-							<Droppable>{isDropped ? draggableMarkup : 'Drop here'}</Droppable>
+							<Droppable>
+								{isDropped
+									? draggableMarkup
+									: 'Drop here'}
+							</Droppable>
 						</DndContext>
 						<ThemeProvider>
 							<ThemeSwitcher />

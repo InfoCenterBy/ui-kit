@@ -5,9 +5,14 @@ const CopyComponent = ({ children, objToCopy, copyName }) => {
 		<>
 			<div className='w-full'>
 				<div className='flex justify-end'>
-					<div className='tooltip-left tooltip tooltip-accent' onClick={() => CopyHtml(objToCopy)}>
+					<div
+						className='tooltip-left tooltip tooltip-accent'
+						onClick={() => CopyHtml(objToCopy)}
+					>
 						<div className='tooltip-content'>
-							<div className='text-[.625rem]'>copy {copyName}</div>
+							<div className='text-[.75rem]'>
+								copy {copyName}
+							</div>
 						</div>
 						<div className='cursor-pointer'>
 							{/* copyIcon */}
@@ -17,7 +22,7 @@ const CopyComponent = ({ children, objToCopy, copyName }) => {
 								viewBox='0 0 24 24'
 								strokeWidth={1.5}
 								stroke='currentColor'
-								className='w-4 h-4'
+								className='w-5 h-5'
 							>
 								<path
 									strokeLinecap='round'
@@ -28,7 +33,7 @@ const CopyComponent = ({ children, objToCopy, copyName }) => {
 						</div>
 					</div>
 				</div>
-				{children}
+				<div className='mt-3'>{children}</div>
 			</div>
 		</>
 	)

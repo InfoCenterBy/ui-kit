@@ -1,14 +1,40 @@
-const themeToggle = () => {
+import { useEffect, useState } from 'react'
+
+const ThemeToggle = ({ setTheme }) => {
+	const [isChecked, setIsChecked] = useState(localStorage.getItem('theme') === 'dark')
+
+	useEffect(() => {
+		setTheme(localStorage.getItem('theme'))
+	})
+
+	const handleCheckboxChange = (event) => {
+		const checked = event.target.checked
+		setIsChecked(checked)
+		setTheme(checked ? 'dark' : '')
+		localStorage.setItem('theme', checked ? 'dark' : '')
+		// if (checked) {
+		// 	localStorage.setItem('theme', 'dark')
+		// } else {
+		// 	localStorage.setItem('theme', '')
+		// }
+	}
+
 	return (
 		<>
 			<div className='right-auto relative place-items-center grid pe-1'>
 				<label className='swap swap-rotate'>
 					{/* this hidden checkbox controls the state */}
-					<input type='checkbox' className='theme-controller' value='synthwave' />
+					<input
+						type='checkbox'
+						className='theme-controller'
+						value='synthwave'
+						checked={isChecked}
+						onChange={handleCheckboxChange}
+					/>
 
 					{/* sun icon */}
 					<svg
-						className='fill-current w-5 h-5 swap-off'
+						className='dark:fill-white w-5 h-5 swap-on'
 						xmlns='http://www.w3.org/2000/svg'
 						viewBox='0 0 24 24'
 					>
@@ -17,7 +43,7 @@ const themeToggle = () => {
 
 					{/* moon icon */}
 					<svg
-						className='fill-current w-5 h-5 swap-on'
+						className='dark:fill-white w-5 h-5 swap-off'
 						xmlns='http://www.w3.org/2000/svg'
 						viewBox='0 0 24 24'
 					>
@@ -29,4 +55,4 @@ const themeToggle = () => {
 	)
 }
 
-export default themeToggle
+export default ThemeToggle
