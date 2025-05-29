@@ -1,17 +1,33 @@
 const SideNav = ({ className, listItem }) => {
 	const isObject = typeof { listItem } === 'object'
-	const LinkStyle =
-		' dark:hover:bg-gray-800 hover:bg-gray-950 hover:text-white'
+	const LinkStyle = ' dark:hover:bg-gray-800 hover:bg-gray-200'
 	return (
 		<>
 			<ul
 				className={
 					className +
-					' lg:top-2 top-0 sticky dark:bg-base-200 bg-transparent text-black dark:text-white rounded-box menu z-10 border dark:border-transparent border-black p-0'
+					' lg:top-2 top-0 sticky dark:bg-base-200 bg-transparent text-black dark:text-white rounded-box menu z-10 border dark:border-transparent border-gray-400 p-0 overflow-hidden'
 				}
 			>
-				{isObject
+				{isObject && listItem
 					? Object.entries(listItem).map(([name, value]) => {
+							// if element have a single option
+							if (value[0] === undefined) {
+								try {
+									return (
+										<li key={name}>
+											<a
+												className={`${LinkStyle} dark:hover:text-gray-400`}
+											>
+												{name}
+											</a>
+										</li>
+									)
+								} catch (error) {
+									console.log(error)
+								}
+							}
+							// basic render of element list
 							try {
 								const valueArr = value.map((el) => {
 									return (
@@ -24,6 +40,7 @@ const SideNav = ({ className, listItem }) => {
 										</li>
 									)
 								})
+
 								return (
 									<li key={name}>
 										<details>
@@ -43,22 +60,6 @@ const SideNav = ({ className, listItem }) => {
 							}
 						})
 					: null}
-				{/* <li>
-					<details>
-						<summary className={LinkStyle}>Buttons</summary>
-						<ul className='before:bg-gray-700 dark:before:bg-amber-50'>
-							<li>
-								<a className={LinkStyle}>Submenu 1</a>
-							</li>
-							<li>
-								<a className={LinkStyle}>Submenu 2</a>
-							</li>
-						</ul>
-					</details>
-				</li>
-				<li>
-					<a className={LinkStyle}>Item 3</a>
-				</li> */}
 			</ul>
 		</>
 	)

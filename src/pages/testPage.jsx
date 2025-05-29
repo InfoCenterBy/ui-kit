@@ -1,5 +1,3 @@
-import Button from '../components/ui/group/buttons/button'
-import Logo from '../components/logo'
 import Test from '../components/test'
 import SideNav from '../components/system/sidenav'
 import { useState } from 'react'

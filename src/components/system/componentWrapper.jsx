@@ -11,10 +11,14 @@ const ComponentWrapper = ({ children }) => {
 	}
 
 	const tabStyle =
-		'[--tab-border-color:black] dark:[--tab-border-color:transparent] text-black dark:text-white dark:[--tab-bg:#191e24] [--tab-bg:transparent] after:text-black dark:after:text-white'
+		'[--tab-border-color:black] dark:[--tab-border-color:transparent] text-black dark:text-white dark:[--tab-bg:#191e24] [--tab-bg:transparent] after:text-black dark:after:text-white dark:hover:text-white hover:text-gray-800'
+
+	const tabContentStyle =
+		'bg-gray-100 dark:bg-base-200 px-4 py-2 border border-gray-200 dark:border-gray-700 rounded-lg tab-content'
+
 	return (
 		<>
-			<div className='tabs tabs-lift'>
+			<div className='tabs-border tabs'>
 				<input
 					type='radio'
 					name='code_tab'
@@ -22,7 +26,7 @@ const ComponentWrapper = ({ children }) => {
 					aria-label='preview'
 					defaultChecked
 				/>
-				<div className='bg-base-200 px-4 py-2 border-base-300 tab-content'>
+				<div className={`${tabContentStyle}`}>
 					<CopyComponent
 						objToCopy={
 							htmlCode ? parsedHtml(htmlCode) : children
@@ -39,7 +43,7 @@ const ComponentWrapper = ({ children }) => {
 					className={`${tabStyle} tab`}
 					aria-label='html'
 				/>
-				<div className='bg-base-200 px-4 py-2 border-base-300 tab-content'>
+				<div className={`${tabContentStyle}`}>
 					<CopyComponent objToCopy={children} copyName={'html'}>
 						<PreviewHtmlComponent
 							htmlCode={htmlCode}
@@ -56,9 +60,11 @@ const ComponentWrapper = ({ children }) => {
 					className={`${tabStyle} tab`}
 					aria-label='jsx'
 				/>
-				<div className='bg-base-200 px-4 py-2 border-base-300 tab-content'>
+				<div className={`${tabContentStyle}`}>
 					<CopyComponent objToCopy={children} copyName={'jsx'}>
-						jsx
+						<span className='text-black dark:text-white'>
+							jsx
+						</span>
 					</CopyComponent>
 				</div>
 			</div>

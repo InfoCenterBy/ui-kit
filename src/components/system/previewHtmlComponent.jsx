@@ -12,26 +12,13 @@ const PreviewHtmlComponent = ({ children, htmlCode, setHtmlCode }) => {
 	})
 	return (
 		<>
-			<div className='bg-base-200 pt-0 mockup-code'>
-				<pre className='before:hidden px-3'>
-					<code
-						// contentEditable
-						// suppressContentEditableWarning={true}
-						// onInput={(e) => console.log(true, e.target)}
-						// onInput={(e) => setHtmlCode(e.target)}
-						className='focus-within:outline-0'
-						// onChange={(e) => console.log(true, e.target)}
-					>
-						<textarea
-							className='focus-within:outline-0 w-full resize-none'
-							rows='7'
-							onChange={(e) => setHtmlCode(e.target.value)}
-							defaultValue={
-								htmlCode ? htmlCode : formattedHtml
-							}
-						></textarea>
-					</code>
-				</pre>
+			<div className=''>
+				<textarea
+					className='bg-white dark:bg-gray-800 p-2 rounded-[.75rem] focus-within:outline-0 w-full text-black dark:text-white resize-none'
+					rows='7'
+					onChange={(e) => setHtmlCode(e.target.value)}
+					defaultValue={htmlCode ? htmlCode : formattedHtml}
+				></textarea>
 			</div>
 		</>
 	)
