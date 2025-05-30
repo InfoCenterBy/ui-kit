@@ -3,8 +3,10 @@ import CopyComponent from './copyComponent'
 import PreviewHtmlComponent from './previewHtmlComponent'
 import HTMLReactParser from 'html-react-parser'
 
-const ComponentWrapper = ({ children }) => {
+const ComponentWrapper = ({ children, components, category }) => {
 	const [htmlCode, setHtmlCode] = useState()
+
+	console.log('category', category)
 
 	let parsedHtml = (code) => {
 		return HTMLReactParser(code)
@@ -26,15 +28,24 @@ const ComponentWrapper = ({ children }) => {
 					aria-label='preview'
 					defaultChecked
 				/>
-				<div className={`${tabContentStyle}`}>
-					<CopyComponent
-						objToCopy={
-							htmlCode ? parsedHtml(htmlCode) : children
-						}
-						copyName={'html'}
-					>
-						{htmlCode ? parsedHtml(htmlCode) : children}
-					</CopyComponent>
+				<div className={`${tabContentStyle} `}>
+					{components.map((el) => {
+						return (
+							<CopyComponent
+								objToCopy={
+									htmlCode
+										? parsedHtml(htmlCode)
+										: el.component
+								}
+								copyName={'html'}
+								key={el.name}
+								//TODO: add category in id
+								id={el.name}
+							>
+								{el.component}
+							</CopyComponent>
+						)
+					})}
 				</div>
 
 				<input

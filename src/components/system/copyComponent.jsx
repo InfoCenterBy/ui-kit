@@ -1,9 +1,9 @@
 import CopyHtml from '../hooks/copyHtml'
 
-const CopyComponent = ({ children, objToCopy, copyName }) => {
+const CopyComponent = ({ children, objToCopy, copyName, id }) => {
 	return (
 		<>
-			<div className='w-full'>
+			<div className='w-full' id={id}>
 				<div className='flex justify-end'>
 					<div
 						className='tooltip-left tooltip tooltip-accent'

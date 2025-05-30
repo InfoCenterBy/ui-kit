@@ -1,3 +1,4 @@
+import Logo from '../components/logo'
 import ComponentWrapper from '../components/system/componentWrapper'
 import SideNav from '../components/system/sidenav'
 import Test from '../components/test'
@@ -5,21 +6,35 @@ import BtnDefault from '../components/ui/group/buttons/default/btnDefault'
 
 const UiKit = () => {
 	const uiList = {
-		buttons: {
-			name: 'default',
-			component: <BtnDefault>Click me</BtnDefault>,
-		},
-		test: {
-			component: <BtnDefault>test</BtnDefault>,
-		},
+		buttons: [
+			{
+				name: 'default',
+				component: <BtnDefault>Click me</BtnDefault>,
+			},
+			{
+				name: 'menu',
+				component: <BtnDefault>Click menu</BtnDefault>,
+			},
+		],
+		accordion: [
+			{
+				name: 'default',
+				component: <Logo />,
+			},
+		],
 	}
 
 	//process uiList to this {name: ['component_name'], ...} for render in sideNav
-	const navList = Object.entries(uiList).reduce((acc, [key, value]) => {
-		if (Array.isArray(value)) {
-			acc[key] = value.map((item) => item.name)
+	const navList = Object.entries(uiList).reduce((acc, [key, items]) => {
+		// check items is array
+		if (Array.isArray(items)) {
+			// filter el and create arr of names
+			acc[key] = items
+				.filter((item) => item?.name) // check name is exist
+				.map((item) => item.name) // take name
 		} else {
-			acc[key] = [value.name]
+			// if items is not arr create empty arr
+			acc[key] = []
 		}
 		return acc
 	}, {})
@@ -32,13 +47,16 @@ const UiKit = () => {
 						className={'lg:w-[20%] w-full'}
 						listItem={navList}
 					/>
-					<div className='w-full lg:w-[80%]'>
-						{/* <ComponentWrapper>
-							<Test />
-						</ComponentWrapper> */}
-						<ComponentWrapper>
-							<BtnDefault>Click me</BtnDefault>
-						</ComponentWrapper>
+					<div className='flex flex-col w-full lg:w-[80%]'>
+						{Object.entries(uiList).map(
+							([category, components]) => (
+								<ComponentWrapper
+									key={category}
+									category={category}
+									components={components}
+								/>
+							)
+						)}
 					</div>
 				</div>
 			</main>
