@@ -6,7 +6,7 @@ import HTMLReactParser from 'html-react-parser'
 const ComponentWrapper = ({ children, components, category }) => {
 	const [htmlCode, setHtmlCode] = useState()
 
-	console.log('category', category)
+	console.log('components', components)
 
 	let parsedHtml = (code) => {
 		return HTMLReactParser(code)
@@ -42,7 +42,9 @@ const ComponentWrapper = ({ children, components, category }) => {
 								//TODO: add category in id
 								id={el.name}
 							>
-								{el.component}
+								{htmlCode
+									? parsedHtml(htmlCode)
+									: el.component}
 							</CopyComponent>
 						)
 					})}
@@ -55,14 +57,25 @@ const ComponentWrapper = ({ children, components, category }) => {
 					aria-label='html'
 				/>
 				<div className={`${tabContentStyle}`}>
-					<CopyComponent objToCopy={children} copyName={'html'}>
-						<PreviewHtmlComponent
-							htmlCode={htmlCode}
-							setHtmlCode={setHtmlCode}
-						>
-							{children}
-						</PreviewHtmlComponent>
-					</CopyComponent>
+					{components.map((el) => {
+						return (
+							<CopyComponent
+								objToCopy={
+									htmlCode
+										? parsedHtml(htmlCode)
+										: el.component
+								}
+								copyName={'html'}
+							>
+								<PreviewHtmlComponent
+									htmlCode={htmlCode}
+									setHtmlCode={setHtmlCode}
+								>
+									{el.component}
+								</PreviewHtmlComponent>
+							</CopyComponent>
+						)
+					})}
 				</div>
 
 				<input
