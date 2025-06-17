@@ -47,9 +47,9 @@ const UiKit = () => {
 						className={'lg:w-[20%] w-full'}
 						listItem={navList}
 					/>
-					<div className='flex flex-col w-full lg:w-[80%]'>
+					<div className='flex flex-col gap-3 w-full lg:w-[80%]'>
 						{Object.entries(uiList).map(
-							([category, components]) => (
+							([category, components, index]) => (
 								<ComponentWrapper
 									key={category}
 									category={category}
