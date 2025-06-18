@@ -30,7 +30,7 @@ const ComponentWrapper = ({ children, components, category }) => {
 			<h4 className='h-4 font-semibold text-black dark:text-white'>
 				{category}
 			</h4>
-			<div className='tabs-border tabs'>
+			<div className='mt-2 tabs-border tabs'>
 				{/* Preview Tab */}
 				<input
 					type='radio'
@@ -48,7 +48,7 @@ const ComponentWrapper = ({ children, components, category }) => {
 							}
 							copyName={'html'}
 							key={`preview-${el.name}`}
-							id={`preview-${el.name}`}
+							id={`${category + '-' + el.name}`}
 						>
 							{htmlCodes[el.name]
 								? parsedHtml(htmlCodes[el.name])

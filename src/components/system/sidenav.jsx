@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 const SideNav = ({ className, listItem }) => {
 	const isObject = typeof { listItem } === 'object'
 	const LinkStyle = ' dark:hover:bg-gray-800 hover:bg-gray-200'
@@ -32,11 +34,15 @@ const SideNav = ({ className, listItem }) => {
 								const valueArr = value.map((el) => {
 									return (
 										<li key={el}>
-											<a
+											<Link
 												className={`${LinkStyle} dark:hover:text-gray-400`}
+												to={{
+													hash: '#',
+													pathname: `${name + '-' + el}`,
+												}}
 											>
 												{el}
-											</a>
+											</Link>
 										</li>
 									)
 								})
