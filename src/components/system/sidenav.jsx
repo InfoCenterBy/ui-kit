@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { HashLink } from 'react-router-hash-link'
 
 const SideNav = ({ className, listItem }) => {
 	const isObject = typeof { listItem } === 'object'
@@ -13,7 +14,7 @@ const SideNav = ({ className, listItem }) => {
 			>
 				{isObject && listItem
 					? Object.entries(listItem).map(([name, value]) => {
-							// if element have a single option
+							//* if element have a single option render it as uniq
 							if (value[0] === undefined) {
 								try {
 									return (
@@ -29,20 +30,17 @@ const SideNav = ({ className, listItem }) => {
 									console.log(error)
 								}
 							}
-							// basic render of element list
+							//* basic render of element list
 							try {
 								const valueArr = value.map((el) => {
 									return (
 										<li key={el}>
-											<Link
+											<HashLink
 												className={`${LinkStyle} dark:hover:text-gray-400`}
-												to={{
-													hash: '#',
-													pathname: `${name + '-' + el}`,
-												}}
+												to={`#${name + '-' + el}`}
 											>
 												{el}
-											</Link>
+											</HashLink>
 										</li>
 									)
 								})
