@@ -1,10 +1,11 @@
 import Logo from '../components/logo'
 import ComponentWrapper from '../components/system/componentWrapper'
 import SideNav from '../components/system/sidenav'
-import Test from '../components/test'
 import BtnDefault from '../components/ui/group/buttons/default/btnDefault'
 
 const UiKit = () => {
+	//* if component has MULTIPLE variations use this COMP_NAME:[{name:'name_variation', component:JSX}]
+	//* if component has SINGLE variation use this COMP_NAME:[{component:JSX}]
 	const uiList = {
 		buttons: [
 			{
@@ -22,9 +23,14 @@ const UiKit = () => {
 				component: <Logo />,
 			},
 		],
+		test: [
+			{
+				component: <Logo />,
+			},
+		],
 	}
 
-	//process uiList to this {name: ['component_name'], ...} for render in sideNav
+	//* process uiList to this {name: ['component_name'], ...} for render in sideNav
 	const navList = Object.entries(uiList).reduce((acc, [key, items]) => {
 		// check items is array
 		if (Array.isArray(items)) {
@@ -49,7 +55,7 @@ const UiKit = () => {
 					/>
 					<div className='flex flex-col gap-3 w-full lg:w-[80%]'>
 						{Object.entries(uiList).map(
-							([category, components, index]) => (
+							([category, components]) => (
 								<ComponentWrapper
 									key={category}
 									category={category}

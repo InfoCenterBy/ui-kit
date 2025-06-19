@@ -38,6 +38,11 @@ const SideNav = ({ className, listItem }) => {
 											<HashLink
 												className={`${LinkStyle} dark:hover:text-gray-400`}
 												to={`#${name + '-' + el}`}
+												onClick={() => {
+													console.log(
+														true
+													)
+												}}
 											>
 												{el}
 											</HashLink>

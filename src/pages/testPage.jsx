@@ -10,7 +10,9 @@ import ComponentWrapper from '../components/system/componentWrapper'
 
 const TestPage = () => {
 	const [isDropped, setIsDropped] = useState(false)
-	const draggableMarkup = <Draggable>Drag me</Draggable>
+	const draggableMarkup = (
+		<Draggable className='text-black dark:text-white'>Drag me</Draggable>
+	)
 
 	const handleDragEnd = (event) => {
 		if (event.over && event.over.id === 'droppable') {
@@ -25,19 +27,15 @@ const TestPage = () => {
 					<div className='w-full lg:w-[80%]'>
 						<DndContext onDragEnd={handleDragEnd}>
 							{!isDropped ? draggableMarkup : null}
-							<Droppable>
+							<Droppable className='text-black dark:text-white'>
 								{isDropped
 									? draggableMarkup
 									: 'Drop here'}
 							</Droppable>
 						</DndContext>
-						<ThemeProvider>
+						{/* <ThemeProvider>
 							<ThemeSwitcher />
-							{/*  */}
-						</ThemeProvider>
-						<ComponentWrapper>
-							<Test />
-						</ComponentWrapper>
+						</ThemeProvider> */}
 					</div>
 				</div>
 			</main>
