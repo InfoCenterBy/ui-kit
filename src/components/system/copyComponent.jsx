@@ -33,7 +33,8 @@ const CopyComponent = ({ children, objToCopy, copyName, id }) => {
 						</div>
 					</div>
 				</div>
-				<div className='mt-3'>{children}</div>
+				<div className={`mt-3`}>{children}</div>
+				{/*  */}
 			</div>
 		</>
 	)

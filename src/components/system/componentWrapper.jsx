@@ -3,7 +3,12 @@ import CopyComponent from './copyComponent'
 import PreviewHtmlComponent from './previewHtmlComponent'
 import HTMLReactParser from 'html-react-parser'
 
-const ComponentWrapper = ({ children, components, category }) => {
+const ComponentWrapper = ({
+	children,
+	components,
+	category,
+	selectedComponent,
+}) => {
 	const [htmlCodes, setHtmlCodes] = useState({})
 
 	let parsedHtml = (code) => {
@@ -43,6 +48,7 @@ const ComponentWrapper = ({ children, components, category }) => {
 					className={`${tabStyle} tab`}
 					aria-label='preview'
 					onChange={() => testFun()}
+					// checked={selectedComponent}
 				/>
 				<div className={`${tabContentStyle}`}>
 					{components.map((el) => (
@@ -54,11 +60,13 @@ const ComponentWrapper = ({ children, components, category }) => {
 							}
 							copyName={'html'}
 							key={`preview-${el.name}`}
-							id={`${category + '-' + el.name}`}
+							id={`${el.name ? category + '-' + el.name : category}`}
 						>
-							{htmlCodes[el.name]
-								? parsedHtml(htmlCodes[el.name])
-								: el.component}
+							<div className='p-2 border active:border-gray-700 dark:active:border-white border-transparent rounded-lg w-fit duration-300 ease-out'>
+								{htmlCodes[el.name]
+									? parsedHtml(htmlCodes[el.name])
+									: el.component}
+							</div>
 						</CopyComponent>
 					))}
 				</div>

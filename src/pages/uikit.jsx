@@ -1,11 +1,12 @@
+import { useState } from 'react'
 import Logo from '../components/logo'
 import ComponentWrapper from '../components/system/componentWrapper'
 import SideNav from '../components/system/sidenav'
 import BtnDefault from '../components/ui/group/buttons/default/btnDefault'
 
 const UiKit = () => {
-	//* if component has MULTIPLE variations use this COMP_NAME:[{name:'name_variation', component:JSX}]
-	//* if component has SINGLE variation use this COMP_NAME:[{component:JSX}]
+	// * if component has MULTIPLE variations use this COMP_NAME:[{name:'name_variation', component:JSX}]
+	// * if component has SINGLE variation use this COMP_NAME:[{component:JSX}]
 	const uiList = {
 		buttons: [
 			{
@@ -45,6 +46,8 @@ const UiKit = () => {
 		return acc
 	}, {})
 
+	const [activeElement, setActiveElement] = useState('')
+
 	return (
 		<>
 			<main>
@@ -52,14 +55,16 @@ const UiKit = () => {
 					<SideNav
 						className={'lg:w-[20%] w-full'}
 						listItem={navList}
+						changeSelectedComponent={setActiveElement}
 					/>
 					<div className='flex flex-col gap-3 w-full lg:w-[80%]'>
 						{Object.entries(uiList).map(
 							([category, components]) => (
 								<ComponentWrapper
-									key={category}
+									keyComponentWrapper={category}
 									category={category}
 									components={components}
+									selectedComponent={activeElement}
 								/>
 							)
 						)}

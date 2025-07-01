@@ -1,9 +1,13 @@
 import { Link } from 'react-router-dom'
 import { HashLink } from 'react-router-hash-link'
 
-const SideNav = ({ className, listItem }) => {
+const SideNav = ({ className, listItem, changeSelectedComponent }) => {
 	const isObject = typeof { listItem } === 'object'
 	const LinkStyle = ' dark:hover:bg-gray-800 hover:bg-gray-200'
+	const selectedElement = (name) => {
+		console.log('name', name)
+		changeSelectedComponent(name)
+	}
 	return (
 		<>
 			<ul
@@ -19,11 +23,17 @@ const SideNav = ({ className, listItem }) => {
 								try {
 									return (
 										<li key={name}>
-											<a
+											<HashLink
 												className={`${LinkStyle} dark:hover:text-gray-400`}
+												to={`#${name}`}
+												onClick={() => {
+													selectedElement(
+														`#${name}`
+													)
+												}}
 											>
 												{name}
-											</a>
+											</HashLink>
 										</li>
 									)
 								} catch (error) {
@@ -39,8 +49,8 @@ const SideNav = ({ className, listItem }) => {
 												className={`${LinkStyle} dark:hover:text-gray-400`}
 												to={`#${name + '-' + el}`}
 												onClick={() => {
-													console.log(
-														true
+													selectedElement(
+														`#${name + '-' + el}`
 													)
 												}}
 											>
