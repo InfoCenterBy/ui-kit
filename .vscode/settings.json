@@ -33,5 +33,10 @@
      "bemHelper.classNameCase":"any",
      "prettier.semi": false,
      "prettier.printWidth": 80,
-     "editor.wordWrap": "on"
+     "editor.wordWrap": "on",
+     "github.copilot.chat.codeGeneration.instructions": [
+          {
+               "file": "./.vscode/daisyui.md"
+          }
+     ]
 }
