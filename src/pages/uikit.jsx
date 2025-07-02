@@ -61,7 +61,7 @@ const UiKit = () => {
 						{Object.entries(uiList).map(
 							([category, components]) => (
 								<ComponentWrapper
-									keyComponentWrapper={category}
+									key={category}
 									category={category}
 									components={components}
 									selectedComponent={activeElement}
