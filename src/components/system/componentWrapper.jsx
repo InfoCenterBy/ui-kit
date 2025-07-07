@@ -2,6 +2,7 @@ import { useState, useRef } from 'react'
 import CopyComponent from './copyComponent'
 import PreviewHtmlComponent from './previewHtmlComponent'
 import HTMLReactParser from 'html-react-parser'
+import classNames from 'classnames'
 
 const ComponentWrapper = ({
 	children,
@@ -76,8 +77,18 @@ const ComponentWrapper = ({
 							id={`${el.name ? category + '-' + el.name : category}`}
 						>
 							<div
-								className={`p-2 border rounded-lg w-fit duration-300 ease-out  
-									${selectedComponent?.category === category && selectedComponent?.tab === 'preview' && selectedComponent?.name === el.name ? 'active border-black dark:border-white' : ''}`}
+								className={classNames(
+									'p-2  rounded-lg w-fit duration-300 ease-out',
+									{
+										'border border-black dark:border-white':
+											selectedComponent?.category ===
+												category &&
+											selectedComponent?.tab ===
+												'preview' &&
+											selectedComponent?.name ===
+												el.name,
+									}
+								)}
 								tabIndex={-1}
 								ref={
 									el.name
