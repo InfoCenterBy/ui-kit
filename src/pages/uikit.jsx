@@ -46,7 +46,11 @@ const UiKit = () => {
 		return acc
 	}, {})
 
-	const [activeElement, setActiveElement] = useState('')
+	const [active, setActive] = useState({
+		category: '',
+		name: '',
+		tab: 'preview',
+	})
 
 	return (
 		<>
@@ -55,7 +59,9 @@ const UiKit = () => {
 					<SideNav
 						className={'lg:w-[20%] w-full'}
 						listItem={navList}
-						changeSelectedComponent={setActiveElement}
+						changeSelectedComponent={(category, name) =>
+							setActive({ category, name, tab: 'preview' })
+						}
 					/>
 					<div className='flex flex-col gap-3 w-full lg:w-[80%]'>
 						{Object.entries(uiList).map(
@@ -64,7 +70,8 @@ const UiKit = () => {
 									key={category}
 									category={category}
 									components={components}
-									selectedComponent={activeElement}
+									selectedComponent={active}
+									setSelectedComponent={setActive}
 								/>
 							)
 						)}

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import CopyComponent from './copyComponent'
 import PreviewHtmlComponent from './previewHtmlComponent'
 import HTMLReactParser from 'html-react-parser'
@@ -8,8 +8,14 @@ const ComponentWrapper = ({
 	components,
 	category,
 	selectedComponent,
+	setSelectedComponent,
 }) => {
 	const [htmlCodes, setHtmlCodes] = useState({})
+
+	const previewTabRef = useRef(null)
+	const htmlTabRef = useRef(null)
+	const jsxTabRef = useRef(null)
+	const componentRefs = useRef([])
 
 	let parsedHtml = (code) => {
 		return HTMLReactParser(code)
@@ -20,10 +26,6 @@ const ComponentWrapper = ({
 			...prev,
 			[componentName]: newHtml,
 		}))
-	}
-
-	const testFun = () => {
-		console.log('true')
 	}
 
 	const tabStyle =
@@ -44,14 +46,25 @@ const ComponentWrapper = ({
 				{/* Preview Tab */}
 				<input
 					type='radio'
-					name='code_tab'
+					name={`code_tab_${category}`}
 					className={`${tabStyle} tab`}
 					aria-label='preview'
-					onChange={() => testFun()}
-					// checked={selectedComponent}
+					ref={previewTabRef}
+					checked={
+						selectedComponent?.category === category &&
+						selectedComponent?.tab === 'preview'
+					}
+					onChange={() =>
+						setSelectedComponent &&
+						setSelectedComponent((prev) => ({
+							...prev,
+							category,
+							tab: 'preview',
+						}))
+					}
 				/>
 				<div className={`${tabContentStyle}`}>
-					{components.map((el) => (
+					{components.map((el, idx) => (
 						<CopyComponent
 							objToCopy={
 								htmlCodes[el.name]
@@ -62,7 +75,19 @@ const ComponentWrapper = ({
 							key={`preview-${el.name}`}
 							id={`${el.name ? category + '-' + el.name : category}`}
 						>
-							<div className='p-2 border active:border-gray-700 dark:active:border-white border-transparent rounded-lg w-fit duration-300 ease-out'>
+							<div
+								className={`p-2 border rounded-lg w-fit duration-300 ease-out  
+									${selectedComponent?.category === category && selectedComponent?.tab === 'preview' && selectedComponent?.name === el.name ? 'active border-black dark:border-white' : ''}`}
+								tabIndex={-1}
+								ref={
+									el.name
+										? (el) =>
+												(componentRefs.current[
+													idx
+												] = el)
+										: null
+								}
+							>
 								{htmlCodes[el.name]
 									? parsedHtml(htmlCodes[el.name])
 									: el.component}
@@ -74,10 +99,22 @@ const ComponentWrapper = ({
 				{/* HTML Tab */}
 				<input
 					type='radio'
-					name='code_tab'
+					name={`code_tab_${category}`}
 					className={`${tabStyle} tab`}
 					aria-label='html'
-					onChange={() => testFun()}
+					ref={htmlTabRef}
+					checked={
+						selectedComponent?.category === category &&
+						selectedComponent?.tab === 'html'
+					}
+					onChange={() =>
+						setSelectedComponent &&
+						setSelectedComponent((prev) => ({
+							...prev,
+							category,
+							tab: 'html',
+						}))
+					}
 				/>
 				<div className={`${tabContentStyle}`}>
 					{components.map((el) => (
@@ -105,10 +142,22 @@ const ComponentWrapper = ({
 				{/* JSX Tab */}
 				<input
 					type='radio'
-					name='code_tab'
+					name={`code_tab_${category}`}
 					className={`${tabStyle} tab`}
 					aria-label='jsx'
-					onChange={() => testFun()}
+					ref={jsxTabRef}
+					checked={
+						selectedComponent?.category === category &&
+						selectedComponent?.tab === 'jsx'
+					}
+					onChange={() =>
+						setSelectedComponent &&
+						setSelectedComponent((prev) => ({
+							...prev,
+							category,
+							tab: 'jsx',
+						}))
+					}
 				/>
 				<div className={`${tabContentStyle}`}>
 					<CopyComponent objToCopy={children} copyName={'jsx'}>

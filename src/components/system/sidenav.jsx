@@ -4,9 +4,8 @@ import { HashLink } from 'react-router-hash-link'
 const SideNav = ({ className, listItem, changeSelectedComponent }) => {
 	const isObject = typeof { listItem } === 'object'
 	const LinkStyle = ' dark:hover:bg-gray-800 hover:bg-gray-200'
-	const selectedElement = (name) => {
-		console.log('name', name)
-		changeSelectedComponent(name)
+	const selectedElement = (category, name) => {
+		changeSelectedComponent(category, name)
 	}
 	return (
 		<>
@@ -17,40 +16,39 @@ const SideNav = ({ className, listItem, changeSelectedComponent }) => {
 				}
 			>
 				{isObject && listItem
-					? Object.entries(listItem).map(([name, value]) => {
+					? Object.entries(listItem).map(([category, value]) => {
 							//* if element have a single option render it as uniq
-							if (value[0] === undefined) {
-								try {
+							try {
+								if (value[0] === undefined) {
 									return (
-										<li key={name}>
+										<li key={category}>
 											<HashLink
 												className={`${LinkStyle} dark:hover:text-gray-400`}
-												to={`#${name}`}
+												to={`#${category}`}
 												onClick={() => {
 													selectedElement(
-														`#${name}`
+														category,
+														undefined
 													)
 												}}
 											>
-												{name}
+												{category}
 											</HashLink>
 										</li>
 									)
-								} catch (error) {
-									console.log(error)
 								}
-							}
-							//* basic render of element list
-							try {
+								//* basic render of element list
+
 								const valueArr = value.map((el) => {
 									return (
 										<li key={el}>
 											<HashLink
 												className={`${LinkStyle} dark:hover:text-gray-400`}
-												to={`#${name + '-' + el}`}
+												to={`#${category + '-' + el}`}
 												onClick={() => {
 													selectedElement(
-														`#${name + '-' + el}`
+														category,
+														el
 													)
 												}}
 											>
@@ -61,12 +59,12 @@ const SideNav = ({ className, listItem, changeSelectedComponent }) => {
 								})
 
 								return (
-									<li key={name}>
+									<li key={category}>
 										<details>
 											<summary
 												className={`${LinkStyle} dark:text-gray-500`}
 											>
-												{name}
+												{category}
 											</summary>
 											<ul className='before:bg-gray-700 dark:before:bg-amber-50'>
 												{valueArr}
