@@ -13,16 +13,20 @@
     "predeploy": "npm run build"
   },
   "dependencies": {
+    "@babel/standalone": "^7.28.0",
     "@dnd-kit/core": "^6.3.1",
     "@tailwindcss/vite": "^4.1.7",
     "@uidotdev/usehooks": "^2.4.1",
     "classnames": "^2.5.1",
     "html-prettify": "^1.0.7",
     "html-react-parser": "^5.2.5",
+    "html-to-jsx": "^0.0.4",
+    "htmltojsx": "^0.3.0",
     "js-beautify": "^1.15.4",
     "react": "^19.1.0",
     "react-contenteditable": "^3.3.7",
     "react-dom": "^19.1.0",
+    "react-element-to-jsx-string": "^17.0.1",
     "react-router-hash-link": "^2.4.3"
   },
   "devDependencies": {

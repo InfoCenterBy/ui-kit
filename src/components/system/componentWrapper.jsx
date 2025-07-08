@@ -5,7 +5,7 @@ import HTMLReactParser from 'html-react-parser'
 import classNames from 'classnames'
 
 const ComponentWrapper = ({
-	children,
+	// children,
 	components,
 	category,
 	selectedComponent,
@@ -15,7 +15,7 @@ const ComponentWrapper = ({
 
 	const previewTabRef = useRef(null)
 	const htmlTabRef = useRef(null)
-	const jsxTabRef = useRef(null)
+	// const jsxTabRef = useRef(null)
 	const componentRefs = useRef([])
 
 	let parsedHtml = (code) => {
@@ -29,6 +29,10 @@ const ComponentWrapper = ({
 		}))
 	}
 
+	//* TabStyle
+	// HIGHLIGHT: line 36
+	// HIGHLIGHT: line 39
+	//* TabStyle
 	const tabStyle =
 		'[--tab-border-color:black] dark:[--tab-border-color:transparent] text-black dark:text-white dark:[--tab-bg:#191e24] [--tab-bg:transparent] after:text-black dark:after:text-white dark:hover:text-white hover:text-gray-800'
 
@@ -76,9 +80,12 @@ const ComponentWrapper = ({
 							key={`preview-${el.name}`}
 							id={`${el.name ? category + '-' + el.name : category}`}
 						>
+							<span className='font-semibold text-black dark:text-white underline underline-offset-2'>
+								{el.name}
+							</span>
 							<div
 								className={classNames(
-									'p-2  rounded-lg w-fit duration-300 ease-out',
+									'p-2  rounded-lg w-fit duration-300 ease-out mt-2',
 									{
 										'border border-black dark:border-white':
 											selectedComponent?.category ===
@@ -151,7 +158,7 @@ const ComponentWrapper = ({
 				</div>
 
 				{/* JSX Tab */}
-				<input
+				{/* <input
 					type='radio'
 					name={`code_tab_${category}`}
 					className={`${tabStyle} tab`}
@@ -176,7 +183,7 @@ const ComponentWrapper = ({
 							jsx
 						</span>
 					</CopyComponent>
-				</div>
+				</div> */}
 			</div>
 		</div>
 	)

@@ -6,7 +6,7 @@ const PreviewHtmlComponent = ({ children, htmlCode, setHtmlCode }) => {
 		return ReactDOMServer.renderToStaticMarkup(code)
 	}
 	const formattedHtml = html_beautify(htmlRender(children), {
-		// indent_size: 5,
+		// indent_size: 5,y
 		// indent_char: ' ',
 		// preserve_newlines: true,
 	})

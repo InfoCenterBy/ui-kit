@@ -3,6 +3,7 @@ import Logo from '../components/logo'
 import ComponentWrapper from '../components/system/componentWrapper'
 import SideNav from '../components/system/sidenav'
 import BtnDefault from '../components/ui/group/buttons/default/btnDefault'
+import AccordionDefault from '../components/ui/group/accordion/default/accordion'
 
 const UiKit = () => {
 	// * if component has MULTIPLE variations use this COMP_NAME:[{name:'name_variation', component:JSX}]
@@ -21,7 +22,7 @@ const UiKit = () => {
 		accordion: [
 			{
 				name: 'default',
-				component: <Logo />,
+				component: <AccordionDefault />,
 			},
 		],
 		test: [
