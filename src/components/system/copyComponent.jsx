@@ -1,21 +1,45 @@
 import CopyHtml from '../hooks/copyHtml'
+import SystemToast from './systemToast'
+import { useState } from 'react'
 
-const CopyComponent = ({ children, objToCopy, copyName, id }) => {
+const CopyComponent = ({ children, objToCopy, copyName, id, name }) => {
+	const [isCopied, setIsCopied] = useState(false)
+	function handleCopy() {
+		CopyHtml(objToCopy)
+		setIsCopied(true)
+		setTimeout(() => {
+			setIsCopied(false)
+		}, 2000)
+	}
 	return (
 		<>
-			<div className='w-full' id={id}>
-				<div className='flex justify-end'>
+			{/* <div
+				className='tooltip'	
+				id={id}
+				onClick={() => CopyHtml(objToCopy)}
+			>
+				<div className='tooltip-content'>
+					<div className='text-[.75rem]'>copy {copyName}</div>
+				</div>
+				<div className=''>{children}</div>
+			</div> */}
+			<div className='' id={id}>
+				<div className='flex justify-between items-center gap-2'>
+					<div className='block opacity-60 text-black dark:text-white text-sm italic select-none pointer-none'>
+						{name}
+					</div>
 					<div
 						className='tooltip-left tooltip tooltip-accent'
-						onClick={() => CopyHtml(objToCopy)}
+						onClick={() => {
+							handleCopy()
+						}}
 					>
-						<div className='tooltip-content'>
+						<div className='ms-3 tooltip-content'>
 							<div className='text-[.75rem]'>
 								copy {copyName}
 							</div>
 						</div>
 						<div className='cursor-pointer'>
-							{/* copyIcon */}
 							<svg
 								xmlns='http://www.w3.org/2000/svg'
 								fill='none'
@@ -33,9 +57,11 @@ const CopyComponent = ({ children, objToCopy, copyName, id }) => {
 						</div>
 					</div>
 				</div>
-				<div className={`mt-3`}>{children}</div>
-				{/*  */}
+				<div className='mt-2'>{children}</div>
 			</div>
+			{isCopied && (
+				<SystemToast type='success'>Component copied!</SystemToast>
+			)}
 		</>
 	)
 }

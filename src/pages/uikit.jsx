@@ -4,6 +4,7 @@ import ComponentWrapper from '../components/system/componentWrapper'
 import SideNav from '../components/system/sidenav'
 import BtnDefault from '../components/ui/group/buttons/default/btnDefault'
 import AccordionDefault from '../components/ui/group/accordion/default/accordion'
+import AccordionJoined from '../components/ui/group/accordion/joined/accordion'
 
 const UiKit = () => {
 	// * if component has MULTIPLE variations use this COMP_NAME:[{name:'name_variation', component:JSX}]
@@ -23,6 +24,10 @@ const UiKit = () => {
 			{
 				name: 'default',
 				component: <AccordionDefault />,
+			},
+			{
+				name: 'joined',
+				component: <AccordionJoined />,
 			},
 		],
 		test: [

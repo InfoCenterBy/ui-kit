@@ -27,7 +27,8 @@
     "react-contenteditable": "^3.3.7",
     "react-dom": "^19.1.0",
     "react-element-to-jsx-string": "^17.0.1",
-    "react-router-hash-link": "^2.4.3"
+    "react-router-hash-link": "^2.4.3",
+    "react-toastify": "^11.0.5"
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",
