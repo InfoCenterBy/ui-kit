@@ -29,7 +29,4 @@ main,
 	display: flex;
 	flex-direction: column;
 }
-main {
-	height: 1500px;
-}
 /* @use "./App.scss"; */

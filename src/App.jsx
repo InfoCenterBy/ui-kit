@@ -11,7 +11,7 @@ function App() {
 	return (
 		<>
 			<div
-				className={`${theme ? 'dark' : ''} bg-white dark:bg-zinc-800 px-1`}
+				className={`${theme ? 'dark' : ''} bg-white dark:bg-black px-1`}
 			>
 				<NavBar setTheme={setTheme} />
 				<Routes>

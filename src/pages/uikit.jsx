@@ -5,6 +5,9 @@ import SideNav from '../components/system/sidenav'
 import BtnDefault from '../components/ui/group/buttons/default/btnDefault'
 import AccordionDefault from '../components/ui/group/accordion/default/accordion'
 import AccordionJoined from '../components/ui/group/accordion/joined/accordion'
+import ColorParent from '../components/system/colors/colorParent'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 const UiKit = () => {
 	// * if component has MULTIPLE variations use this COMP_NAME:[{name:'name_variation', component:JSX}]
@@ -69,20 +72,39 @@ const UiKit = () => {
 							setActive({ category, name, tab: 'preview' })
 						}
 					/>
-					<div className='flex flex-col gap-3 w-full lg:w-[80%]'>
-						{Object.entries(uiList).map(
-							([category, components]) => (
-								<ComponentWrapper
-									key={category}
-									category={category}
-									components={components}
-									selectedComponent={active}
-									setSelectedComponent={setActive}
-								/>
-							)
-						)}
+					<div className='w-full lg:w-[80%]'>
+						<div className=''>
+							<ColorParent />
+						</div>
+						<div className='flex flex-col gap-3 mt-4'>
+							{Object.entries(uiList).map(
+								([category, components]) => (
+									<ComponentWrapper
+										key={category}
+										category={category}
+										components={components}
+										selectedComponent={active}
+										setSelectedComponent={
+											setActive
+										}
+									/>
+								)
+							)}
+						</div>
 					</div>
 				</div>
+				<ToastContainer
+					position='top-right'
+					hideProgressBar
+					closeOnClick
+					draggable
+					pauseOnHover
+					toastClassName={() => 'toast toast-top toast-end'}
+					bodyClassName={() => 'p-0'}
+					limit={5}
+					autoClose={5000}
+					pauseOnFocusLoss={true}
+				/>
 			</main>
 		</>
 	)
