@@ -8,21 +8,32 @@ const CopyComponent = ({ children, objToCopy, copyName, id, name }) => {
 			? id
 					.replace(/-/g, ' ')
 					.replace(/^./, (char) => char.toUpperCase())
-			: ''
+			: 'Html'
+	const toastConfig = {
+		position: 'top-right',
+		autoClose: 1000,
+		closeOnClick: true,
+		closeButton: false,
+		hideProgressBar: true,
+	}
 	const notify = () => {
-		toast(
-			<SystemToast type='success'>
-				{capitalizeName} copied!
-			</SystemToast>,
-			{
-				position: 'top-right',
-				autoClose: 1000,
-				closeOnClick: true,
-				closeButton: false,
-				hideProgressBar: true,
-			}
-		)
-		CopyHtml(objToCopy)
+		try {
+			toast(
+				<SystemToast type='success'>
+					{capitalizeName} copied!
+				</SystemToast>,
+				toastConfig
+			)
+			CopyHtml(objToCopy)
+		} catch (error) {
+			console.log(Error, error)
+			toast(
+				<SystemToast type='error'>
+					{capitalizeName} not copied!
+				</SystemToast>,
+				toastConfig
+			)
+		}
 	}
 	return (
 		<div className='' id={id}>

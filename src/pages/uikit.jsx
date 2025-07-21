@@ -7,13 +7,12 @@ import AccordionDefault from '../components/ui/group/accordion/default/accordion
 import AccordionJoined from '../components/ui/group/accordion/joined/accordion'
 import ColorParent from '../components/system/colors/colorParent'
 import { ToastContainer } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
 
 const UiKit = () => {
 	// * if component has MULTIPLE variations use this COMP_NAME:[{name:'name_variation', component:JSX}]
 	// * if component has SINGLE variation use this COMP_NAME:[{component:JSX}]
 	const uiList = {
-		buttons: [
+		button: [
 			{
 				name: 'default',
 				component: <BtnDefault>Click me</BtnDefault>,
