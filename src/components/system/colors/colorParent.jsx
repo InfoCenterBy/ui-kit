@@ -15,46 +15,60 @@ const ColorParent = () => {
 	return (
 		<div>
 			<h1 className='text-black dark:text-white'>Color Palette</h1>
-			<div className='flex flex-col items-start gap-2 mt-3'>
-				<label
-					htmlFor='strength'
-					className='block text-black dark:text-white'
-				>
-					Сила цвета: {colorStrength}
-				</label>
-				<div className='w-full max-w-xs'>
-					<input
-						type='range'
-						name='strength'
-						id='strength'
-						min={0}
-						max={COLOR_STRENGTHS.length - 1}
-						value={COLOR_STRENGTHS.indexOf(colorStrength)}
-						onChange={(e) =>
-							setColorStrength(
-								COLOR_STRENGTHS[+e.target.value]
-							)
-						}
-						className='range range-xs dark:[--range-progress:white] dark:[--range-thumb:black] [--range-progress:black] [--range-thumb:white] [--range-bg:stone-500] dark:[--range-bg:base-300]'
-					/>
-					<div className='flex justify-between mt-2 px-2.5 text-xs'>
-						{COLOR_STRENGTHS.map((element) => {
-							return (
-								<span
-									className='base-content'
-									key={element}
-								>
-									{element}
-								</span>
-							)
-						})}
+			<div className='flex flex-row gap-3 mt-3'>
+				<div className='flex flex-col items-start gap-2'>
+					<label
+						htmlFor='strength'
+						className='block text-black dark:text-white'
+					>
+						Сила цвета: {colorStrength}
+					</label>
+					<div className='w-full max-w-xs'>
+						<input
+							type='range'
+							name='strength'
+							id='strength'
+							min={0}
+							max={COLOR_STRENGTHS.length - 1}
+							value={COLOR_STRENGTHS.indexOf(
+								colorStrength
+							)}
+							onChange={(e) =>
+								setColorStrength(
+									COLOR_STRENGTHS[+e.target.value]
+								)
+							}
+							className='range range-xs dark:[--range-progress:white] dark:[--range-thumb:black] [--range-progress:black] [--range-thumb:white] [--range-bg:stone-500] dark:[--range-bg:base-300]'
+						/>
+						<div className='flex justify-between mt-2 px-2.5 text-xs'>
+							{COLOR_STRENGTHS.map((element) => {
+								return (
+									<span
+										className='base-content'
+										key={element}
+									>
+										{element}
+									</span>
+								)
+							})}
+						</div>
 					</div>
+				</div>
+				<div className='flex flex-col items-start gap-2'>
+					<label
+						htmlFor='type'
+						className='block text-black dark:text-white'
+					>
+						Color or name
+					</label>
+					<input type='checkbox' name='type' id='type' />
 				</div>
 			</div>
 			<div className='flex flex-wrap gap-2 mt-3 p-2 border dark:border-white border-black rounded-lg'>
 				<ColorBlock
 					colorFromParent='bg-black'
 					textColor='text-white'
+					type='color'
 				/>
 				<ColorBlock
 					colorFromParent='bg-transparent'
