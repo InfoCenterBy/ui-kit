@@ -3,7 +3,7 @@ const BtnDefault = ({ children, onClick, className }) => {
 		<>
 			<button
 				onClick={onClick}
-				className={`${className ? `${className} ` : ''}btn dark:bg-gray-700 dark:text-white`}
+				className={`${className ? `${className} ` : ''}btn btn-primary`}
 			>
 				{children}
 			</button>

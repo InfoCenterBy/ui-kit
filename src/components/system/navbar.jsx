@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom'
 import ThemeToggle from './themeToggle'
 
-const NavBar = ({ setTheme }) => {
+const NavBar = () => {
 	const linkStyle =
-		'hover:opacity-70 dark:text-white text-black underline-offset-2 transition duration-300'
+		'hover:opacity-70 underline-offset-2 transition duration-300 text-base-content'
 	return (
 		<>
-			<div className='flex flex-row justify-between items-center mt-3.5 py-2 border dark:border-white border-black rounded-lg'>
+			<div className='flex flex-row justify-between items-center mt-3.5 py-2 border border-base-200 rounded-lg'>
 				<nav className='w-full'>
 					<ul className='flex flex-row justify-center gap-x-2'>
 						<li>
@@ -26,7 +26,7 @@ const NavBar = ({ setTheme }) => {
 						</li>
 					</ul>
 				</nav>
-				<ThemeToggle setTheme={setTheme} />
+				<ThemeToggle />
 			</div>
 		</>
 	)

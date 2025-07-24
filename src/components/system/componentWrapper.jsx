@@ -50,16 +50,16 @@ const ComponentWrapper = ({
 
 	//* TabStyle
 	const tabStyle =
-		'[--tab-border-color:black] dark:[--tab-border-color:transparent] text-black dark:text-white dark:[--tab-bg:#191e24] [--tab-bg:transparent] after:text-black dark:after:text-white dark:hover:text-white hover:text-gray-800'
+		'[--tab-border-color:var(--fallback-bc,theme(colors.base-200))] text-base-content [--tab-bg:transparent] after:text-base-content hover:text-base-content'
 
 	//* TabStyle
 
 	return (
 		<div
-			className='p-2 border border-gray-600 dark:border-gray-100 rounded-lg'
+			className='p-2 border border-base-200 rounded-lg'
 			id={`${category}-component`}
 		>
-			<h4 className='h-4 font-semibold text-black dark:text-white'>
+			<h4 className='h-4 font-semibold text-base-content'>
 				{category}
 			</h4>
 			<div className='mt-2 tabs-border tabs'>

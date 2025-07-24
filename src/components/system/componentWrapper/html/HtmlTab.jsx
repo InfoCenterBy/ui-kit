@@ -8,7 +8,7 @@ const ComponentWrapperHtmlTab = ({
 	updateHtmlCode,
 }) => {
 	return (
-		<div className='bg-gray-100 dark:bg-base-200 px-6 py-3 border border-gray-200 dark:border-gray-700 rounded-lg tab-content'>
+		<div className='bg-base-100 px-6 py-3 border border-base-200 rounded-lg tab-content'>
 			{components.map((el) => (
 				<CopyComponent
 					objToCopy={

@@ -14,12 +14,12 @@ const ColorParent = () => {
 
 	return (
 		<div>
-			<h1 className='text-black dark:text-white'>Color Palette</h1>
+			<h1 className='text-base-content'>Color Palette</h1>
 			<div className='flex flex-row gap-3 mt-3'>
 				<div className='flex flex-col items-start gap-2'>
 					<label
 						htmlFor='strength'
-						className='block text-black dark:text-white'
+						className='block text-base-content'
 					>
 						Сила цвета: {colorStrength}
 					</label>
@@ -38,9 +38,9 @@ const ColorParent = () => {
 									COLOR_STRENGTHS[+e.target.value]
 								)
 							}
-							className='range range-xs dark:[--range-progress:white] dark:[--range-thumb:black] [--range-progress:black] [--range-thumb:white] [--range-bg:stone-500] dark:[--range-bg:base-300]'
+							className='range range-xs [--range-progress:theme(colors.base-content)] [--range-thumb:theme(colors.base-content)] [--range-bg:theme(colors.base-200)]'
 						/>
-						<div className='flex justify-between mt-2 px-2.5 text-xs'>
+						<div className='flex justify-between gap-2 mt-2 px-2 text-xs'>
 							{COLOR_STRENGTHS.map((element) => {
 								return (
 									<span
@@ -57,14 +57,20 @@ const ColorParent = () => {
 				<div className='flex flex-col items-start gap-2'>
 					<label
 						htmlFor='type'
-						className='block text-black dark:text-white'
+						className='block text-base-content'
 					>
 						Color or name
 					</label>
-					<input type='checkbox' name='type' id='type' />
+					<input
+						type='checkbox'
+						defaultChecked
+						className='checkbox'
+						name='type'
+						id='type'
+					/>
 				</div>
 			</div>
-			<div className='flex flex-wrap gap-2 mt-3 p-2 border dark:border-white border-black rounded-lg'>
+			<div className='flex flex-wrap gap-2 mt-3 p-2 border border-base-200 rounded-lg'>
 				<ColorBlock
 					colorFromParent='bg-black'
 					textColor='text-white'

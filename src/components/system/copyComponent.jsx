@@ -38,7 +38,7 @@ const CopyComponent = ({ children, objToCopy, copyName, id, name }) => {
 	return (
 		<div className='' id={id}>
 			<div className='flex justify-between items-center gap-2'>
-				<div className='block opacity-60 text-black dark:text-white text-sm italic select-none pointer-none'>
+				<div className='block opacity-60 text-sm text-base-content italic select-none pointer-none'>
 					{name}
 				</div>
 				<div
@@ -57,7 +57,7 @@ const CopyComponent = ({ children, objToCopy, copyName, id, name }) => {
 							viewBox='0 0 24 24'
 							strokeWidth={1.5}
 							stroke='currentColor'
-							className='stroke-black dark:stroke-white w-5 h-5'
+							className='stroke-base-content w-5 h-5'
 						>
 							<path
 								strokeLinecap='round'

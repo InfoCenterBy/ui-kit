@@ -2,7 +2,7 @@ import { HashLink } from 'react-router-hash-link'
 
 const SideNav = ({ className, listItem, changeSelectedComponent }) => {
 	const isObject = typeof { listItem } === 'object'
-	const LinkStyle = ' dark:hover:bg-gray-800 hover:bg-gray-200'
+	const LinkStyle = 'hover:bg-base-200 bg-transparent text-base-content'
 	const selectedElement = (category, name) => {
 		changeSelectedComponent(category, name)
 	}
@@ -11,7 +11,7 @@ const SideNav = ({ className, listItem, changeSelectedComponent }) => {
 			<ul
 				className={
 					className +
-					' lg:top-2 top-0 sticky dark:bg-base-200 bg-transparent text-black dark:text-white rounded-box menu z-10 border dark:border-transparent border-gray-400 p-0 overflow-hidden'
+					' lg:top-2 top-0 sticky bg-base-100 text-base-content rounded-box menu z-10 border border-base-200 p-0 overflow-hidden'
 				}
 			>
 				{isObject && listItem
@@ -22,7 +22,7 @@ const SideNav = ({ className, listItem, changeSelectedComponent }) => {
 									return (
 										<li key={category}>
 											<HashLink
-												className={`${LinkStyle} dark:hover:text-gray-400`}
+												className={`${LinkStyle}`}
 												to={`#${category}`}
 												onClick={() => {
 													selectedElement(
@@ -42,7 +42,7 @@ const SideNav = ({ className, listItem, changeSelectedComponent }) => {
 									return (
 										<li key={el}>
 											<HashLink
-												className={`${LinkStyle} dark:hover:text-gray-400`}
+												className={`${LinkStyle}`}
 												to={`#${category + '-' + el}`}
 												onClick={() => {
 													selectedElement(
@@ -61,11 +61,11 @@ const SideNav = ({ className, listItem, changeSelectedComponent }) => {
 									<li key={category}>
 										<details>
 											<summary
-												className={`${LinkStyle} dark:text-gray-500`}
+												className={`${LinkStyle}`}
 											>
 												{category}
 											</summary>
-											<ul className='before:bg-gray-700 dark:before:bg-amber-50'>
+											<ul className='before:bg-base-200'>
 												{valueArr}
 											</ul>
 										</details>

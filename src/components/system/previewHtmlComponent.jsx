@@ -14,7 +14,7 @@ const PreviewHtmlComponent = ({ children, htmlCode, setHtmlCode }) => {
 		<>
 			<div className=''>
 				<textarea
-					className='bg-white dark:bg-gray-800 p-2 rounded-[.75rem] focus-within:outline-0 w-full text-black dark:text-white resize-none'
+					className='bg-base-100 p-2 rounded-[.75rem] focus-within:outline-0 w-full text-base-content resize-none'
 					rows='7'
 					onChange={(e) => setHtmlCode(e.target.value)}
 					defaultValue={htmlCode ? htmlCode : formattedHtml}

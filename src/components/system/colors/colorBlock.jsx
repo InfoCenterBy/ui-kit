@@ -27,7 +27,7 @@ const ColorBlock = ({ colorFromParent, className, textColor }) => {
 	return (
 		<div
 			className={classNames(
-				'rounded-lg p-1 border dark:border-white border-black grid items-center cursor-pointer',
+				'rounded-lg p-1 border border-base-200 grid items-center cursor-pointer',
 				className
 			)}
 			onClick={() => copyColor(colorFromParent)}
@@ -42,8 +42,8 @@ const ColorBlock = ({ colorFromParent, className, textColor }) => {
 				>
 					<div
 						className={classNames(
-							'text-sm',
-							textColor ? textColor : 'text-white'
+							'text-sm text-base-content',
+							textColor
 						)}
 					>
 						{colorFromParent}

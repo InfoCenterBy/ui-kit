@@ -4,16 +4,12 @@ import UiKit from './pages/uikit'
 import Home from './pages/home'
 import TestPage from './pages/testPage'
 import NavBar from './components/system/navbar'
-import { useState } from 'react'
 
 function App() {
-	const [theme, setTheme] = useState('')
 	return (
 		<>
-			<div
-				className={`${theme ? 'dark' : ''} bg-white dark:bg-black px-1`}
-			>
-				<NavBar setTheme={setTheme} />
+			<div className='px-1 min-h-screen'>
+				<NavBar />
 				<Routes>
 					<Route path='/' element={<Home />} />
 					<Route path='/ui' element={<UiKit />} />
