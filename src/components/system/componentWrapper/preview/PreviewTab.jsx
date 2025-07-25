@@ -10,7 +10,7 @@ const ComponentWrapperPreviewTab = ({
 	componentRefs,
 }) => {
 	return (
-		<div className='bg-base-100 px-6 py-3 border border-base-200 rounded-lg tab-content'>
+		<div className='bg-base-300 px-6 py-3 rounded-lg tab-content'>
 			<div className='flex flex-wrap gap-6'>
 				{components.map((el, idx) => (
 					<CopyComponent

@@ -1,3 +1,4 @@
+import classNames from 'classnames'
 import { HashLink } from 'react-router-hash-link'
 
 const SideNav = ({ className, listItem, changeSelectedComponent }) => {
@@ -9,10 +10,10 @@ const SideNav = ({ className, listItem, changeSelectedComponent }) => {
 	return (
 		<>
 			<ul
-				className={
-					className +
-					' lg:top-2 top-0 sticky bg-base-100 text-base-content rounded-box menu z-10 border border-base-200 p-0 overflow-hidden'
-				}
+				className={classNames(
+					className,
+					'lg:top-2 top-0 sticky bg-base-200 text-base-content rounded-box menu z-10 border border-base-200 p-0 overflow-hidden'
+				)}
 			>
 				{isObject && listItem
 					? Object.entries(listItem).map(([category, value]) => {

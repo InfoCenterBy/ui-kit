@@ -7,15 +7,42 @@ const ColorParent = () => {
 		50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950,
 	]
 
-	const applyStrength = (colorclassName) => {
-		colorclassName = colorclassName + `-${colorStrength}`
-		return colorclassName
+	const COLOR_NAMES = [
+		'slate',
+		'gray',
+		'zinc',
+		'neutral',
+		'stone',
+		'red',
+		'orange',
+		'amber',
+		'yellow',
+		'lime',
+		'green',
+		'emerald',
+		'teal',
+		'cyan',
+		'sky',
+		'blue',
+		'indigo',
+		'violet',
+		'purple',
+		'fuchsia',
+		'pink',
+		'rose',
+	]
+
+	const applyStrength = (colorClassName) => {
+		colorClassName = colorClassName + `-${colorStrength}`
+		return colorClassName
 	}
+
+	const [colorType, setColorType] = useState('name')
 
 	return (
 		<div>
 			<h1 className='text-base-content'>Color Palette</h1>
-			<div className='flex flex-row gap-3 mt-3'>
+			<div className='flex flex-row items-center gap-3 mt-3'>
 				<div className='flex flex-col items-start gap-2'>
 					<label
 						htmlFor='strength'
@@ -38,7 +65,7 @@ const ColorParent = () => {
 									COLOR_STRENGTHS[+e.target.value]
 								)
 							}
-							className='range range-xs [--range-progress:theme(colors.base-content)] [--range-thumb:theme(colors.base-content)] [--range-bg:theme(colors.base-200)]'
+							className='range range-xs'
 						/>
 						<div className='flex justify-between gap-2 mt-2 px-2 text-xs'>
 							{COLOR_STRENGTHS.map((element) => {
@@ -54,59 +81,50 @@ const ColorParent = () => {
 						</div>
 					</div>
 				</div>
-				<div className='flex flex-col items-start gap-2'>
+				<div className='flex flex-row items-center gap-2'>
 					<label
 						htmlFor='type'
 						className='block text-base-content'
 					>
-						Color or name
+						Color name
 					</label>
 					<input
 						type='checkbox'
 						defaultChecked
-						className='checkbox'
+						className='checked:shadow-none checkbox'
 						name='type'
 						id='type'
+						onChange={(e) =>
+							setColorType(
+								e.target.checked ? 'name' : 'color'
+							)
+						}
 					/>
 				</div>
 			</div>
-			<div className='flex flex-wrap gap-2 mt-3 p-2 border border-base-200 rounded-lg'>
+			<div className='flex flex-wrap gap-2 mt-3 p-2 border border-base-content rounded-lg'>
 				<ColorBlock
 					colorFromParent='bg-black'
+					colorType={colorType}
 					textColor='text-white'
-					type='color'
-				/>
-				<ColorBlock
-					colorFromParent='bg-transparent'
-					textColor='text-black dark:text-white'
 				/>
 				<ColorBlock
 					colorFromParent='bg-white'
+					colorType={colorType}
 					textColor='text-black'
 				/>
 				{/* Ниже для всех, где есть -500, применяем силу */}
-				<ColorBlock colorFromParent={applyStrength('bg-slate')} />
-				<ColorBlock colorFromParent={applyStrength('bg-gray')} />
-				<ColorBlock colorFromParent={applyStrength('bg-zinc')} />
-				<ColorBlock colorFromParent={applyStrength('bg-neutral')} />
-				<ColorBlock colorFromParent={applyStrength('bg-stone')} />
-				<ColorBlock colorFromParent={applyStrength('bg-red')} />
-				<ColorBlock colorFromParent={applyStrength('bg-orange')} />
-				<ColorBlock colorFromParent={applyStrength('bg-amber')} />
-				<ColorBlock colorFromParent={applyStrength('bg-yellow')} />
-				<ColorBlock colorFromParent={applyStrength('bg-lime')} />
-				<ColorBlock colorFromParent={applyStrength('bg-green')} />
-				<ColorBlock colorFromParent={applyStrength('bg-emerald')} />
-				<ColorBlock colorFromParent={applyStrength('bg-teal')} />
-				<ColorBlock colorFromParent={applyStrength('bg-cyan')} />
-				<ColorBlock colorFromParent={applyStrength('bg-sky')} />
-				<ColorBlock colorFromParent={applyStrength('bg-blue')} />
-				<ColorBlock colorFromParent={applyStrength('bg-indigo')} />
-				<ColorBlock colorFromParent={applyStrength('bg-violet')} />
-				<ColorBlock colorFromParent={applyStrength('bg-purple')} />
-				<ColorBlock colorFromParent={applyStrength('bg-fuchsia')} />
-				<ColorBlock colorFromParent={applyStrength('bg-pink')} />
-				<ColorBlock colorFromParent={applyStrength('bg-rose')} />
+				{COLOR_NAMES.map((color, key) => {
+					return (
+						<ColorBlock
+							colorFromParent={applyStrength(
+								`bg-${color}`
+							)}
+							colorType={colorType}
+							key={key}
+						/>
+					)
+				})}
 			</div>
 			<div className='hidden'>
 				<div className='bg-red-50'></div>

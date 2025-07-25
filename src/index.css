@@ -2,6 +2,7 @@
 @plugin "daisyui" {
 	theme: light, dark;
 	--base-content: black;
+	--base-600: #ff0000;
 }
 @custom-variant dark (&:where(.dark, .dark *));
 
