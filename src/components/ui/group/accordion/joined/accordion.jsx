@@ -6,7 +6,7 @@ const AccordionJoined = () => {
 	)
 	return (
 		<div className='join join-vertical'>
-			<div className={accordionClass}>
+			<div className={classNames(accordionClass, 'rounded-t-lg')}>
 				<input type='radio' name='my-accordion-4' defaultChecked />
 				<div className='collapse-title font-semibold text-base text-base-content'>
 					How do I create an account?
@@ -26,7 +26,7 @@ const AccordionJoined = () => {
 					the instructions sent to your email.
 				</div>
 			</div>
-			<div className={accordionClass}>
+			<div className={classNames(accordionClass, 'rounded-b-lg')}>
 				<input type='radio' name='my-accordion-4' />
 				<div className='collapse-title font-semibold text-base text-base-content'>
 					How do I update my profile information?

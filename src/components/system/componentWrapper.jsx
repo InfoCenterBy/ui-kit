@@ -56,7 +56,7 @@ const ComponentWrapper = ({
 
 	return (
 		<div
-			className='p-2 border border-base-200 rounded-lg'
+			className='p-2 border border-base-content rounded-lg'
 			id={`${category}-component`}
 		>
 			<h4 className='h-4 font-semibold text-base-content'>

@@ -1,18 +1,19 @@
+import classNames from 'classnames'
 import { HashLink } from 'react-router-hash-link'
 
 const SideNav = ({ className, listItem, changeSelectedComponent }) => {
 	const isObject = typeof { listItem } === 'object'
-	const LinkStyle = 'hover:bg-base-200 bg-transparent text-base-content'
+	const LinkStyle = 'text-base-content'
 	const selectedElement = (category, name) => {
 		changeSelectedComponent(category, name)
 	}
 	return (
 		<>
 			<ul
-				className={
-					className +
-					' lg:top-2 top-0 sticky bg-base-100 text-base-content rounded-box menu z-10 border border-base-200 p-0 overflow-hidden'
-				}
+				className={classNames(
+					className,
+					'lg:top-2 top-0 sticky bg-base-100 text-base-content rounded-box menu z-10 border border-base-200 p-0 overflow-hidden'
+				)}
 			>
 				{isObject && listItem
 					? Object.entries(listItem).map(([category, value]) => {
@@ -22,7 +23,10 @@ const SideNav = ({ className, listItem, changeSelectedComponent }) => {
 									return (
 										<li key={category}>
 											<HashLink
-												className={`${LinkStyle}`}
+												className={classNames(
+													'bg-base-200 hover:bg-base-300',
+													LinkStyle
+												)}
 												to={`#${category}`}
 												onClick={() => {
 													selectedElement(
@@ -42,7 +46,9 @@ const SideNav = ({ className, listItem, changeSelectedComponent }) => {
 									return (
 										<li key={el}>
 											<HashLink
-												className={`${LinkStyle}`}
+												className={classNames(
+													'hover:bg-base-300'
+												)}
 												to={`#${category + '-' + el}`}
 												onClick={() => {
 													selectedElement(
@@ -61,7 +67,10 @@ const SideNav = ({ className, listItem, changeSelectedComponent }) => {
 									<li key={category}>
 										<details>
 											<summary
-												className={`${LinkStyle}`}
+												className={classNames(
+													'bg-base-200 hover:bg-base-300',
+													LinkStyle
+												)}
 											>
 												{category}
 											</summary>
