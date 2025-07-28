@@ -30,6 +30,7 @@ const ColorParent = () => {
 		'fuchsia',
 		'pink',
 		'rose',
+		'base',
 	]
 
 	const applyStrength = (colorClassName) => {
