@@ -7,7 +7,7 @@ import AccordionDefault from '../components/ui/group/accordion/default/accordion
 import AccordionJoined from '../components/ui/group/accordion/joined/accordion'
 import ColorParent from '../components/system/colors/colorParent'
 import { ToastContainer } from 'react-toastify'
-
+import Alert from '../components/ui/group/alert/default/alert'
 const UiKit = () => {
 	// * if component has MULTIPLE variations use this COMP_NAME:[{name:'name_variation', component:JSX}]
 	// * if component has SINGLE variation use this COMP_NAME:[{component:JSX}]
@@ -32,11 +32,17 @@ const UiKit = () => {
 				component: <AccordionJoined />,
 			},
 		],
-		test: [
+		alert: [
 			{
-				component: <Logo />,
+				name: 'default',
+				component: <Alert />,
 			},
 		],
+		// test: [
+		// 	{
+		// 		component: <Logo />,
+		// 	},
+		// ],
 	}
 
 	//* process uiList to this {name: ['component_name'], ...} for render in sideNav
