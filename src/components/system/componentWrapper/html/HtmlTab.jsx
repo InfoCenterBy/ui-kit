@@ -24,6 +24,7 @@ const ComponentWrapperHtmlTab = ({
 						setHtmlCode={(newHtml) =>
 							updateHtmlCode(el.name, newHtml)
 						}
+						name={el.name}
 					>
 						{el.component}
 					</PreviewHtmlComponent>

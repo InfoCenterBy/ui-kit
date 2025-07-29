@@ -8,6 +8,15 @@ import AccordionJoined from '../components/ui/group/accordion/joined/accordion'
 import ColorParent from '../components/system/colors/colorParent'
 import { ToastContainer } from 'react-toastify'
 import Alert from '../components/ui/group/alert/default/alert'
+import Badge from '../components/ui/group/badge/default/badge'
+import BadgeSizes from '../components/ui/group/badge/sizes/badgeSizes'
+import Breadcrumbs from '../components/ui/group/breadcrumbs/default/breadcrumbs'
+import BreadcrumbsWithIcons from '../components/ui/group/breadcrumbs/withIcons/breadcrumbsWithIcons'
+import ResponsiveBtn from '../components/ui/group/buttons/responsive/responsive'
+import SizesBtn from '../components/ui/group/buttons/sizes/sizes'
+import BtnRounded from '../components/ui/group/buttons/rounded/btnRounded'
+import BtnCross from '../components/ui/group/buttons/cross/btnCross'
+
 const UiKit = () => {
 	// * if component has MULTIPLE variations use this COMP_NAME:[{name:'name_variation', component:JSX}]
 	// * if component has SINGLE variation use this COMP_NAME:[{component:JSX}]
@@ -18,8 +27,20 @@ const UiKit = () => {
 				component: <BtnDefault>Click me</BtnDefault>,
 			},
 			{
-				name: 'menu',
-				component: <BtnDefault>Click menu</BtnDefault>,
+				name: 'responsive',
+				component: <ResponsiveBtn />,
+			},
+			{
+				name: 'sizes',
+				component: <SizesBtn />,
+			},
+			{
+				name: 'rounded',
+				component: <BtnRounded />,
+			},
+			{
+				name: 'close',
+				component: <BtnCross />,
 			},
 		],
 		accordion: [
@@ -36,6 +57,26 @@ const UiKit = () => {
 			{
 				name: 'default',
 				component: <Alert />,
+			},
+		],
+		badge: [
+			{
+				name: 'default',
+				component: <Badge />,
+			},
+			{
+				name: 'sizes',
+				component: <BadgeSizes />,
+			},
+		],
+		breadcrumbs: [
+			{
+				name: 'default',
+				component: <Breadcrumbs />,
+			},
+			{
+				name: 'withIcons',
+				component: <BreadcrumbsWithIcons />,
 			},
 		],
 		// test: [
@@ -77,8 +118,8 @@ const UiKit = () => {
 							setActive({ category, name, tab: 'preview' })
 						}
 					/>
-					<div className='w-full lg:w-[80%]'>
-						<div className=''>
+					<div className='pb-20 w-full lg:w-[80%] overflow-x-hidden'>
+						<div className='w-full'>
 							<ColorParent />
 						</div>
 						<div className='flex flex-col gap-3 mt-4'>

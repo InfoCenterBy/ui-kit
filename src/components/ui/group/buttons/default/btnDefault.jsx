@@ -1,9 +1,11 @@
+import classNames from 'classnames'
+
 const BtnDefault = ({ children, onClick, className }) => {
 	return (
 		<>
 			<button
 				onClick={onClick}
-				className={`${className ? `${className} ` : ''}btn btn-primary`}
+				className={classNames('btn', className)}
 			>
 				{children}
 			</button>
