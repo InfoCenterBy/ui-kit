@@ -1,21 +1,41 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import CopyComponent from './copyComponent'
 import PreviewHtmlComponent from './previewHtmlComponent'
 import HTMLReactParser from 'html-react-parser'
+import classNames from 'classnames'
+import ComponentWrapperPreviewTab from './componentWrapper/preview/PreviewTab'
+import ComponentWrapperHtmlTab from './componentWrapper/html/HtmlTab'
+// import ComponentWrapperJsxTab from './componentWrapper/jsx/JsxTab'
 
 const ComponentWrapper = ({
-	children,
+	// children,
 	components,
 	category,
 	selectedComponent,
 	setSelectedComponent,
 }) => {
 	const [htmlCodes, setHtmlCodes] = useState({})
+	const [highlightedComponent, setHighlightedComponent] = useState(null)
 
 	const previewTabRef = useRef(null)
 	const htmlTabRef = useRef(null)
-	const jsxTabRef = useRef(null)
+	// const jsxTabRef = useRef(null)
 	const componentRefs = useRef([])
+
+	useEffect(() => {
+		if (
+			selectedComponent?.category === category &&
+			selectedComponent?.tab === 'preview' &&
+			selectedComponent?.name &&
+			!selectedComponent?.triggeredByUser //* <--- if user not triggered
+		) {
+			setHighlightedComponent(selectedComponent.name)
+			const timer = setTimeout(() => {
+				setHighlightedComponent(null)
+			}, 1000)
+			return () => clearTimeout(timer)
+		}
+	}, [selectedComponent, category])
 
 	let parsedHtml = (code) => {
 		return HTMLReactParser(code)
@@ -28,18 +48,18 @@ const ComponentWrapper = ({
 		}))
 	}
 
+	//* TabStyle
 	const tabStyle =
-		'[--tab-border-color:black] dark:[--tab-border-color:transparent] text-black dark:text-white dark:[--tab-bg:#191e24] [--tab-bg:transparent] after:text-black dark:after:text-white dark:hover:text-white hover:text-gray-800'
+		'[--tab-border-color:var(--fallback-bc,theme(colors.base-200))] text-base-content [--tab-bg:transparent] after:text-base-content hover:text-base-content'
 
-	const tabContentStyle =
-		'bg-gray-100 dark:bg-base-200 px-4 py-2 border border-gray-200 dark:border-gray-700 rounded-lg tab-content'
+	//* TabStyle
 
 	return (
 		<div
-			className='p-2 border border-gray-600 dark:border-gray-100 rounded-lg'
+			className='p-2 border border-base-content rounded-lg'
 			id={`${category}-component`}
 		>
-			<h4 className='h-4 font-semibold text-black dark:text-white'>
+			<h4 className='h-4 font-semibold text-base-content'>
 				{category}
 			</h4>
 			<div className='mt-2 tabs-border tabs'>
@@ -47,7 +67,7 @@ const ComponentWrapper = ({
 				<input
 					type='radio'
 					name={`code_tab_${category}`}
-					className={`${tabStyle} tab`}
+					className={classNames(tabStyle, 'tab')}
 					aria-label='preview'
 					ref={previewTabRef}
 					checked={
@@ -60,47 +80,24 @@ const ComponentWrapper = ({
 							...prev,
 							category,
 							tab: 'preview',
+							triggeredByUser: true,
 						}))
 					}
 				/>
-				<div className={`${tabContentStyle}`}>
-					{components.map((el, idx) => (
-						<CopyComponent
-							objToCopy={
-								htmlCodes[el.name]
-									? parsedHtml(htmlCodes[el.name])
-									: el.component
-							}
-							copyName={'html'}
-							key={`preview-${el.name}`}
-							id={`${el.name ? category + '-' + el.name : category}`}
-						>
-							<div
-								className={`p-2 border rounded-lg w-fit duration-300 ease-out  
-									${selectedComponent?.category === category && selectedComponent?.tab === 'preview' && selectedComponent?.name === el.name ? 'active border-black dark:border-white' : ''}`}
-								tabIndex={-1}
-								ref={
-									el.name
-										? (el) =>
-												(componentRefs.current[
-													idx
-												] = el)
-										: null
-								}
-							>
-								{htmlCodes[el.name]
-									? parsedHtml(htmlCodes[el.name])
-									: el.component}
-							</div>
-						</CopyComponent>
-					))}
-				</div>
+				<ComponentWrapperPreviewTab
+					components={components}
+					category={category}
+					htmlCodes={htmlCodes}
+					parsedHtml={parsedHtml}
+					highlightedComponent={highlightedComponent}
+					componentRefs={componentRefs}
+				/>
 
 				{/* HTML Tab */}
 				<input
 					type='radio'
 					name={`code_tab_${category}`}
-					className={`${tabStyle} tab`}
+					className={classNames(tabStyle, 'tab')}
 					aria-label='html'
 					ref={htmlTabRef}
 					checked={
@@ -116,34 +113,19 @@ const ComponentWrapper = ({
 						}))
 					}
 				/>
-				<div className={`${tabContentStyle}`}>
-					{components.map((el) => (
-						<CopyComponent
-							objToCopy={
-								htmlCodes[el.name]
-									? parsedHtml(htmlCodes[el.name])
-									: el.component
-							}
-							copyName={'html'}
-							key={`html-${el.name}`}
-						>
-							<PreviewHtmlComponent
-								htmlCode={htmlCodes[el.name]}
-								setHtmlCode={(newHtml) =>
-									updateHtmlCode(el.name, newHtml)
-								}
-							>
-								{el.component}
-							</PreviewHtmlComponent>
-						</CopyComponent>
-					))}
-				</div>
+				<ComponentWrapperHtmlTab
+					components={components}
+					htmlCodes={htmlCodes}
+					parsedHtml={parsedHtml}
+					updateHtmlCode={updateHtmlCode}
+				/>
 
 				{/* JSX Tab */}
+				{/*
 				<input
 					type='radio'
 					name={`code_tab_${category}`}
-					className={`${tabStyle} tab`}
+					className={classNames(tabStyle, 'tab')}
 					aria-label='jsx'
 					ref={jsxTabRef}
 					checked={
@@ -159,13 +141,8 @@ const ComponentWrapper = ({
 						}))
 					}
 				/>
-				<div className={`${tabContentStyle}`}>
-					<CopyComponent objToCopy={children} copyName={'jsx'}>
-						<span className='text-black dark:text-white'>
-							jsx
-						</span>
-					</CopyComponent>
-				</div>
+				<ComponentWrapperJsxTab />
+				*/}
 			</div>
 		</div>
 	)

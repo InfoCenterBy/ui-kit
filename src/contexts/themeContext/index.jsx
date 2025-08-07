@@ -2,20 +2,57 @@ import { createContext, useContext, useEffect, useState } from 'react'
 
 const ThemeContext = createContext()
 
+const THEME_KEY = 'theme'
+const THEMES = ['light', 'dark', 'system']
+
+function getSystemTheme() {
+	return window.matchMedia('(prefers-color-scheme: dark)').matches
+		? 'dark'
+		: 'light'
+}
+
 export const ThemeProvider = ({ children }) => {
-	const [theme, setTheme] = useState('theme1')
+	// Инициализация темы: localStorage -> system
+	const getInitialTheme = () => {
+		const saved = localStorage.getItem(THEME_KEY)
+		if (THEMES.includes(saved)) return saved
+		return 'system'
+	}
+	const [theme, setTheme] = useState(getInitialTheme())
 
+	// Применяем тему к <html> через data-theme
 	useEffect(() => {
-		const savedTheme = localStorage.getItem('theme') || 'theme1'
-		setTheme(savedTheme)
-	}, [])
+		const applyTheme = (t) => {
+			let applied = t
+			if (t === 'system') applied = getSystemTheme()
+			document.documentElement.setAttribute('data-theme', applied)
+		}
+		applyTheme(theme)
+		localStorage.setItem(THEME_KEY, theme)
+		// Если выбрана system, слушаем изменения системной темы
+		let mql
+		const handleSystemChange = () => {
+			if (theme === 'system') applyTheme('system')
+		}
+		if (theme === 'system') {
+			mql = window.matchMedia('(prefers-color-scheme: dark)')
+			mql.addEventListener('change', handleSystemChange)
+		}
+		return () => {
+			if (mql) mql.removeEventListener('change', handleSystemChange)
+		}
+	}, [theme])
 
+	// Смена темы
 	const toggleTheme = (newTheme) => {
-		setTheme(newTheme)
-		localStorage.setItem('theme', newTheme)
+		if (THEMES.includes(newTheme)) setTheme(newTheme)
 	}
 
-	return <ThemeContext.Provider value={{ theme, toggleTheme }}>{children}</ThemeContext.Provider>
+	return (
+		<ThemeContext.Provider value={{ theme, toggleTheme }}>
+			{children}
+		</ThemeContext.Provider>
+	)
 }
 
 export const useTheme = () => useContext(ThemeContext)

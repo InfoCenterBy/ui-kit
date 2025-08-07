@@ -1,6 +1,8 @@
 @import 'tailwindcss';
-@plugin "daisyui";
-@theme {
+@plugin "daisyui" {
+	theme: light, dark;
+	--base-content: black;
+	--base-600: #ff0000;
 }
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -28,8 +30,5 @@ main,
 	min-width: 320px;
 	display: flex;
 	flex-direction: column;
-}
-main {
-	height: 1500px;
 }
 /* @use "./App.scss"; */

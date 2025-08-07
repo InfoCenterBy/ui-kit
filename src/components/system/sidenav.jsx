@@ -1,19 +1,19 @@
-import { Link } from 'react-router-dom'
+import classNames from 'classnames'
 import { HashLink } from 'react-router-hash-link'
 
 const SideNav = ({ className, listItem, changeSelectedComponent }) => {
 	const isObject = typeof { listItem } === 'object'
-	const LinkStyle = ' dark:hover:bg-gray-800 hover:bg-gray-200'
+	const LinkStyle = 'text-base-content'
 	const selectedElement = (category, name) => {
 		changeSelectedComponent(category, name)
 	}
 	return (
 		<>
 			<ul
-				className={
-					className +
-					' lg:top-2 top-0 sticky dark:bg-base-200 bg-transparent text-black dark:text-white rounded-box menu z-10 border dark:border-transparent border-gray-400 p-0 overflow-hidden'
-				}
+				className={classNames(
+					className,
+					'lg:top-2 top-0 sticky bg-base-100 text-base-content rounded-box menu z-10 border border-base-200 p-0 overflow-hidden'
+				)}
 			>
 				{isObject && listItem
 					? Object.entries(listItem).map(([category, value]) => {
@@ -23,7 +23,10 @@ const SideNav = ({ className, listItem, changeSelectedComponent }) => {
 									return (
 										<li key={category}>
 											<HashLink
-												className={`${LinkStyle} dark:hover:text-gray-400`}
+												className={classNames(
+													'bg-base-200 hover:bg-base-300',
+													LinkStyle
+												)}
 												to={`#${category}`}
 												onClick={() => {
 													selectedElement(
@@ -43,7 +46,9 @@ const SideNav = ({ className, listItem, changeSelectedComponent }) => {
 									return (
 										<li key={el}>
 											<HashLink
-												className={`${LinkStyle} dark:hover:text-gray-400`}
+												className={classNames(
+													'hover:bg-base-300'
+												)}
 												to={`#${category + '-' + el}`}
 												onClick={() => {
 													selectedElement(
@@ -62,11 +67,14 @@ const SideNav = ({ className, listItem, changeSelectedComponent }) => {
 									<li key={category}>
 										<details>
 											<summary
-												className={`${LinkStyle} dark:text-gray-500`}
+												className={classNames(
+													'bg-base-200 hover:bg-base-300',
+													LinkStyle
+												)}
 											>
 												{category}
 											</summary>
-											<ul className='before:bg-gray-700 dark:before:bg-amber-50'>
+											<ul className='before:bg-base-200'>
 												{valueArr}
 											</ul>
 										</details>
