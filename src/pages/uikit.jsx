@@ -31,6 +31,8 @@ import Modal from "../components/ui/group/modal/default/modal"
 import Pagination from "../components/ui/group/pagination/default/pagination"
 import PaginationSizes from "../components/ui/group/pagination/sizes/paginationSizes"
 import Skeleton from "../components/ui/group/skeleton/default/skeleton"
+import Tabs from "../components/ui/group/tabs/default/tabs"
+import TabsWithIcons from "../components/ui/group/tabs/withIcons/tabsWithIcons"
 
 const UiKit = () => {
   // * if component has MULTIPLE variations use this COMP_NAME:[{name:'name_variation', component:JSX}]
