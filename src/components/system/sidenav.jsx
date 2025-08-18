@@ -12,7 +12,7 @@ const SideNav = ({ className, listItem, changeSelectedComponent }) => {
 			<ul
 				className={classNames(
 					className,
-					'lg:top-2 top-0 sticky bg-base-100 text-base-content rounded-box menu z-10 border border-base-200 p-0 overflow-hidden'
+					'top-12 sticky bg-base-100 text-base-content rounded-box menu z-10 border border-base-200 p-0 overflow-hidden'
 				)}
 			>
 				{isObject && listItem

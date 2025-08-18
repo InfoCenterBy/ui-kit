@@ -8,8 +8,8 @@ import NavBar from './components/system/navbar'
 function App() {
 	return (
 		<>
-			<div className='px-1 min-h-screen'>
-				<NavBar />
+			<div className='relative px-1 min-h-screen'>
+				<NavBar className='top-0 z-10 sticky' />
 				<Routes>
 					<Route path='/' element={<Home />} />
 					<Route path='/ui' element={<UiKit />} />
