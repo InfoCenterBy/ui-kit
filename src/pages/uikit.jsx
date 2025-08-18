@@ -16,6 +16,21 @@ import ResponsiveBtn from '../components/ui/group/buttons/responsive/responsive'
 import SizesBtn from '../components/ui/group/buttons/sizes/sizes'
 import BtnRounded from '../components/ui/group/buttons/rounded/btnRounded'
 import BtnCross from '../components/ui/group/buttons/cross/btnCross'
+import Dropdown from '../components/ui/group/dropdown/default/dropdown'
+import Checkbox from '../components/ui/group/checkbox/default/checkbox'
+import CheckboxColors from '../components/ui/group/checkbox/colors/checkboxColors'
+import CheckboxSizes from '../components/ui/group/checkbox/sizes/checkboxSizes'
+import Radio from '../components/ui/group/radio/default/radio'
+import RadioSizes from '../components/ui/group/radio/sizes/radioSizes'
+import RadioColors from '../components/ui/group/radio/colors/radioColors'
+import Card from '../components/ui/group/card/default/card'
+import CardSizes from '../components/ui/group/card/sizes/cardSizes'
+import CardNoImg from '../components/ui/group/card/noImg/cardNoImg'
+import CardLeftImg from '../components/ui/group/card/leftImg/cardLeftImg'
+import Modal from '../components/ui/group/modal/default/modal'
+import Pagination from '../components/ui/group/pagination/default/pagination'
+import PaginationSizes from '../components/ui/group/pagination/sizes/paginationSizes'
+import Skeleton from '../components/ui/group/skeleton/default/skeleton'
 
 const UiKit = () => {
 	// * if component has MULTIPLE variations use this COMP_NAME:[{name:'name_variation', component:JSX}]
@@ -77,6 +92,80 @@ const UiKit = () => {
 			{
 				name: 'withIcons',
 				component: <BreadcrumbsWithIcons />,
+			},
+		],
+		dropdown: [
+			{
+				name: 'default',
+				component: <Dropdown />,
+			},
+		],
+		checkbox: [
+			{
+				name: 'default',
+				component: <Checkbox />,
+			},
+			{
+				name: 'colors',
+				component: <CheckboxColors />,
+			},
+			{
+				name: 'sizes',
+				component: <CheckboxSizes />,
+			},
+		],
+		radio: [
+			{
+				name: 'default',
+				component: <Radio />,
+			},
+			{
+				name: 'sizes',
+				component: <RadioSizes />,
+			},
+			{
+				name: 'colors',
+				component: <RadioColors />,
+			},
+		],
+		card: [
+			{
+				name: 'default',
+				component: <Card />,
+			},
+			{
+				name: 'sizes',
+				component: <CardSizes />,
+			},
+			{
+				name: 'noImg',
+				component: <CardNoImg />,
+			},
+			{
+				name: 'leftImg',
+				component: <CardLeftImg />,
+			},
+		],
+		modal: [
+			{
+				name: 'default',
+				component: <Modal />,
+			},
+		],
+		pagination: [
+			{
+				name: 'default',
+				component: <Pagination />,
+			},
+			{
+				name: 'sizes',
+				component: <PaginationSizes />,
+			},
+		],
+		skeleton: [
+			{
+				name: 'default',
+				component: <Skeleton />,
 			},
 		],
 		// test: [
