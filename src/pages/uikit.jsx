@@ -33,6 +33,25 @@ import PaginationSizes from "../components/ui/group/pagination/sizes/paginationS
 import Skeleton from "../components/ui/group/skeleton/default/skeleton"
 import Tabs from "../components/ui/group/tabs/default/tabs"
 import TabsWithIcons from "../components/ui/group/tabs/withIcons/tabsWithIcons"
+import Collapse from "../components/ui/group/collapse/default/collapse"
+import Drawer from "../components/ui/group/drawer/default/drawer"
+import DrawerOpenFromRight from "../components/ui/group/drawer/openFromRight/drawerOpenFromRight"
+import Tooltip from "../components/ui/group/tooltip/default/tooltip"
+import TooltipWithContent from "../components/ui/group/tooltip/withContent/tooltipWithContent"
+import Toggle from "../components/ui/group/toggle/default/toggle"
+import ToggleColors from "../components/ui/group/toggle/colors/toggleColors"
+import ToggleSizes from "../components/ui/group/toggle/sizes.jsx/toggleSizes"
+import ToggleDisabled from "../components/ui/group/toggle/disabled/toggleDisabled"
+import Label from "../components/ui/group/label/default/label"
+import FloatingLabel from "../components/ui/group/label/floatingLabel/floatingLabel"
+import FloatingLabelSizes from "../components/ui/group/label/floatingLabelSizes/floatingLabelSizes"
+import Select from "../components/ui/group/select/default/select"
+import SelectSizes from "../components/ui/group/select/sizes/selectSizes"
+import SelectDisabled from "../components/ui/group/select/disabled/selectDisabled"
+import Range from "../components/ui/group/range/default/range"
+import RangeSizes from "../components/ui/group/range/sizes/rangeSizes"
+import RangeSteps from "../components/ui/group/range/rangeSteps/rangeSteps"
+import RangeDisabled from "../components/ui/group/range/disabled/rangeDisabled"
 
 const UiKit = () => {
   // * if component has MULTIPLE variations use this COMP_NAME:[{name:'name_variation', component:JSX}]
@@ -184,6 +203,90 @@ const UiKit = () => {
       {
         name: "withIcons",
         component: <TabsWithIcons />,
+      },
+    ],
+    drawer: [
+      {
+        name: "default",
+        component: <Drawer />,
+      },
+      {
+        name: "openFromRight",
+        component: <DrawerOpenFromRight />,
+      },
+    ],
+    tooltip: [
+      {
+        name: "default",
+        component: <Tooltip />,
+      },
+      {
+        name: "withContent",
+        component: <TooltipWithContent />,
+      },
+    ],
+    toggle: [
+      {
+        name: "default",
+        component: <Toggle />,
+      },
+      {
+        name: "colors",
+        component: <ToggleColors />,
+      },
+      {
+        name: "sizes",
+        component: <ToggleSizes />,
+      },
+      {
+        name: "disabled",
+        component: <ToggleDisabled />,
+      },
+    ],
+    label: [
+      {
+        name: "default",
+        component: <Label />,
+      },
+      {
+        name: "floatingLabel",
+        component: <FloatingLabel />,
+      },
+      {
+        name: "floatingLabelSizes",
+        component: <FloatingLabelSizes />,
+      },
+    ],
+    select: [
+      {
+        name: "default",
+        component: <Select />,
+      },
+      {
+        name: "sizes",
+        component: <SelectSizes />,
+      },
+      {
+        name: "disabled",
+        component: <SelectDisabled />,
+      },
+    ],
+    range: [
+      {
+        name: "default",
+        component: <Range />,
+      },
+      {
+        name: "sizes",
+        component: <RangeSizes />,
+      },
+      {
+        name: "steps",
+        component: <RangeSteps />,
+      },
+      {
+        name: "disabled",
+        component: <RangeDisabled />,
       },
     ],
     // test: [

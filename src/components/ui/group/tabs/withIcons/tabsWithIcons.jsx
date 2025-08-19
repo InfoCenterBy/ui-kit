@@ -63,27 +63,6 @@ const TabsWithIcons = () => {
       <div className="tab-content bg-base-100 border-base-300 p-6">
         Tab content 3
       </div>
-
-      <div className="tab">
-        <div className="dropdown p-0">
-          <div
-            tabIndex={0}
-            role="button"
-            className="btn m-1 bg-transparent border-0 text-base-400">
-            Tab 4
-          </div>
-          <ul
-            tabIndex={0}
-            className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
-            <li>
-              <a>Item 1</a>
-            </li>
-            <li>
-              <a>Item 2</a>
-            </li>
-          </ul>
-        </div>
-      </div>
     </div>
   )
 }
