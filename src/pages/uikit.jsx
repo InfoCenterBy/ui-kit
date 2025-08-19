@@ -31,6 +31,20 @@ import Modal from '../components/ui/group/modal/default/modal'
 import Pagination from '../components/ui/group/pagination/default/pagination'
 import PaginationSizes from '../components/ui/group/pagination/sizes/paginationSizes'
 import Skeleton from '../components/ui/group/skeleton/default/skeleton'
+import LoadingSpinner from '../components/ui/group/loading/spinner/loadingSpinner'
+import LoadingDots from '../components/ui/group/loading/dots/loadingDots'
+import LoadingRings from '../components/ui/group/loading/rings/loadingRings'
+import LoadingColors from '../components/ui/group/loading/colors/loadingColors'
+import Input from '../components/ui/group/inputs/default/input'
+import InputFloatLabel from '../components/ui/group/inputs/floatLabel/inputFloatLabel'
+import InputSizes from '../components/ui/group/inputs/sizes/inputSizes'
+import InputValidator from '../components/ui/group/inputs/validator/inputValidator'
+import InputSearch from '../components/ui/group/inputs/search/inputSearch'
+import InputTime from '../components/ui/group/inputs/time/inputTime'
+import InputDate from '../components/ui/group/inputs/date/inputDate'
+import InputWithLabel from '../components/ui/group/inputs/withLabel/inputWithLabel'
+import IndicatorBadge from '../components/ui/group/indicator/badge/indicatorBadge'
+import IndicatorStatus from '../components/ui/group/indicator/status/indicatorStatus'
 
 const UiKit = () => {
 	// * if component has MULTIPLE variations use this COMP_NAME:[{name:'name_variation', component:JSX}]
@@ -166,6 +180,69 @@ const UiKit = () => {
 			{
 				name: 'default',
 				component: <Skeleton />,
+			},
+		],
+		loading: [
+			{
+				name: 'spinner',
+				component: <LoadingSpinner />,
+			},
+			{
+				name: 'dots',
+				component: <LoadingDots />,
+			},
+			{
+				name: 'rings',
+				component: <LoadingRings />,
+			},
+			{
+				name: 'colors',
+				component: <LoadingColors />,
+			},
+		],
+		input: [
+			{
+				name: 'default',
+				component: <Input />,
+			},
+			{
+				name: 'floatLabel',
+				component: <InputFloatLabel />,
+			},
+
+			{
+				name: 'validator',
+				component: <InputValidator />,
+			},
+			{
+				name: 'search',
+				component: <InputSearch />,
+			},
+			{
+				name: 'time',
+				component: <InputTime />,
+			},
+			{
+				name: 'date',
+				component: <InputDate />,
+			},
+			{
+				name: 'withLabel',
+				component: <InputWithLabel />,
+			},
+			{
+				name: 'sizes',
+				component: <InputSizes />,
+			},
+		],
+		indicator: [
+			{
+				name: 'badge',
+				component: <IndicatorBadge />,
+			},
+			{
+				name: 'status',
+				component: <IndicatorStatus />,
 			},
 		],
 		// test: [
