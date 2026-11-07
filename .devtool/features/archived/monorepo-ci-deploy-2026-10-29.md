@@ -1,16 +1,16 @@
 ---
 id: "monorepo-ci-deploy-2026-10-29"
-status: "review"
+status: "done"
 priority: "high"
 assignee: null
+epic: null
 dueDate: null
 created: "2026-10-29T09:20:34.000Z"
-modified: "2026-10-29T09:40:03.000Z"
-completedAt: null
+modified: "2026-11-05T09:28:33.854Z"
+completedAt: "2026-11-05T09:28:33.854Z"
 labels: ["инфраструктура", "этап-0"]
-order: "a2"
+order: "aB"
 ---
-
 # CI и деплой каталога после переезда
 
 Обновить workflow GitHub Pages под pnpm и монорепо.

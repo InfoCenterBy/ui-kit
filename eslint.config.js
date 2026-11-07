@@ -11,6 +11,21 @@ export default [
 		files: ['**/*.{ts,tsx}'],
 	})),
 	{
+		files: ['**/*.tsx'],
+		languageOptions: { globals: globals.browser },
+		plugins: {
+			'react-hooks': reactHooks,
+			'react-refresh': reactRefresh,
+		},
+		rules: {
+			...reactHooks.configs['recommended-latest'].rules,
+			'react-refresh/only-export-components': [
+				'warn',
+				{ allowConstantExport: true },
+			],
+		},
+	},
+	{
 		files: ['**/*.{js,jsx}'],
 		languageOptions: {
 			ecmaVersion: 'latest',

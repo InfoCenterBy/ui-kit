@@ -17,6 +17,8 @@ pnpm install
 pnpm dev
 ```
 
+`pnpm dev` starts the catalog dev server.
+
 ## Repository layout
 
 This is a pnpm workspace.
@@ -24,13 +26,13 @@ This is a pnpm workspace.
 - `apps/catalog`: the daisyUI component catalog (Vite app).
 - `packages/theme`: `@ui-system/theme`, colors, theme presets and the theme generator logic.
 - `packages/blocks`: `@ui-system/blocks`, HTML component examples and their registry.
-***REMOVED***
 
 ## Scripts
 
 | Script              | What it does                                |
 | ------------------- | ------------------------------------------- |
 | `pnpm dev`          | Start the catalog dev server                |
+| `pnpm catalog`      | Start the catalog dev server                |
 | `pnpm build`        | Build the catalog to `apps/catalog/dist`    |
 | `pnpm preview`      | Serve the production build locally          |
 | `pnpm lint`         | Run ESLint                                  |

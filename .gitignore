@@ -24,3 +24,10 @@ dist-ssr
 *.sln
 *.sw?
 .publish/
+
+# Playwright MCP screenshots and traces
+.playwright-mcp
+
+# Playwright e2e reports and traces
+test-results
+playwright-report
