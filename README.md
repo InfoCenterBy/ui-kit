@@ -2,7 +2,7 @@
 
 A catalog of [daisyUI](https://daisyui.com) components with live preview, an in-browser HTML editor and copy-ready HTML or JSX.
 
-Live: https://infocenterby.github.io/ui-system/
+Live: https://infocenterby.github.io/ui-kit/
 
 ## Stack
 
